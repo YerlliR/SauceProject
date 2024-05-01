@@ -1,0 +1,33 @@
+#AnchorPane {
+    -fx-background-color: black;
+}
+
+.button {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #4d4d4d;
+}
+
+.button:pressed {
+    -fx-background-color: #1a1a1a;
+}
+
+.label {
+    -fx-font-size: 20px;
+    -fx-text-fill: white; /* Color del texto */
+
+}
+
+/* Estilo para una etiqueta con clase 'importante' */
+.label.importante {
+    -fx-font-weight: bold; /* Texto en negrita */
+    -fx-text-fill: red; /* Color del texto rojo */
+}
