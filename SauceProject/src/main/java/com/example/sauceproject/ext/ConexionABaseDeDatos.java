@@ -13,9 +13,7 @@ public class ConexionABaseDeDatos {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            System.out.println("Conectando a la base de datos...");
             conexion = DriverManager.getConnection(URL, USUARIO, CONTRASEÑA);
-            System.out.println("¡Conexión exitosa!");
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
         } catch (ClassNotFoundException e) {
