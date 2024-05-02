@@ -1,5 +1,5 @@
-#AnchorPane {
-    -fx-background-color: black;
+.anchor-pane {
+    -fx-background-color: #2b2a33 ;
 }
 
 .button {
@@ -20,14 +20,43 @@
     -fx-background-color: #1a1a1a;
 }
 
-.label {
-    -fx-font-size: 20px;
-    -fx-text-fill: white; /* Color del texto */
 
+
+.label.inicioSesion {
+
+    -fx-text-align: left;
+    -fx-font-family: Arial Black;
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+    -fx-text-fill: white;
+    -fx-text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
-/* Estilo para una etiqueta con clase 'importante' */
-.label.importante {
-    -fx-font-weight: bold; /* Texto en negrita */
-    -fx-text-fill: red; /* Color del texto rojo */
+.text-field.inicioSesion {
+    -fx-width: 300px;
+    -fx-background-color: #333;
+    -fx-border: 2px solid #555;
+    -fx-border-radius: 5px;
+    -fx-border-color: white;
+    -fx-padding: 10px;
+    -fx-box-sizing: border-box;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-outline: none;
+
+}
+.text-field.inicioSesion:focused {
+    -fx-border-color: #00bcd4;
+}
+.text-field.inicioSesion:placeholder {
+    -fx-text-fill: #999;
+}
+
+.label.SignIn{
+        -fx-text-align: left;
+        -fx-font-family: Arial Black;
+        -fx-font-weight: bold;
+        -fx-font-size: 20px;
+        -fx-text-fill: white;
+        -fx-text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }

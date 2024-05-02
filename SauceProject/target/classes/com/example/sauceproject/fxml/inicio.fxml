@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.controllers.InicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.InicioController">
    <children>
       <ImageView fitHeight="420.0" fitWidth="420.0" layoutX="90.0" layoutY="-50.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="-50.0">
          <image>
@@ -13,6 +13,6 @@
          </image>
       </ImageView>
       <Button layoutX="221.0" layoutY="307.0" mnemonicParsing="false" onAction="#CambiarLogIn" text="LogIn" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="307.0" />
-      <Button layoutX="300.0" layoutY="307.0" mnemonicParsing="false" text="Sign In" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="307.0" />
+      <Button layoutX="300.0" layoutY="307.0" mnemonicParsing="false" onAction="#CambiarSignIn" text="Sign In" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="307.0" />
    </children>
 </AnchorPane>

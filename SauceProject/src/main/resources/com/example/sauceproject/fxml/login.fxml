@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.controllers.loginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2b2a33;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.loginController">
    <children>
-      <Label layoutX="116.0" layoutY="112.0" stylesheets="@../css/styles.css" text="Usuario:" />
-      <Label layoutX="92.0" layoutY="188.0" stylesheets="@../css/styles.css" text="Contraseña:" />
+      <Label layoutX="68.0" layoutY="86.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" text="Usuario:" />
+      <Label layoutX="68.0" layoutY="164.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" text="Contraseña:" />
+      <TextField layoutX="335.0" layoutY="83.0" promptText="Usuario" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
+      <Button layoutX="356.0" layoutY="307.0" mnemonicParsing="false" onAction="#Volver" text="Volver" AnchorPane.leftAnchor="356.0" AnchorPane.rightAnchor="159.0" />
+      <Button layoutX="462.0" layoutY="307.0" mnemonicParsing="false" onAction="#Iniciar" text="OK" AnchorPane.leftAnchor="462.0" AnchorPane.rightAnchor="53.0" />
+      <PasswordField layoutX="334.0" layoutY="161.0" promptText="Contraseña" styleClass="inicioSesion" />
    </children>
 </AnchorPane>
