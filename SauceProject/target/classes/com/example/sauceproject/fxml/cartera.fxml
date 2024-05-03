@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,8 +10,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="600.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.MercadoController">
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="600.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.CarteraController">
    <children>
       <BorderPane layoutX="515.0" layoutY="215.0" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -98,18 +97,23 @@
             </GridPane>
          </top>
          <center>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <content>
-                  <TableView prefHeight="918.0" prefWidth="1495.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="#" />
-                      <TableColumn prefWidth="280.0" text="Nombre" />
-                        <TableColumn prefWidth="589.0" text="Precio" />
-                        <TableColumn prefWidth="575.0" text="Market Cap" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="9.0" layoutY="40.0" prefHeight="200.0" prefWidth="1502.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" style="-fx-font-size: 20;" text="Saldo total:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="59.0" styleClass="dinero" text="XXX.XXX,XX$" />
+                        <Label layoutX="14.0" layoutY="100.0" text="Rentabilidad total:" />
+                        <Label layoutX="14.0" layoutY="132.0" text="+ XXX,XX$ (XX,XX%)" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="269.0" prefHeight="631.0" prefWidth="1502.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;" />
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>

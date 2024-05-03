@@ -2,8 +2,7 @@ package com.example.sauceproject;
 
 import java.io.IOException;
 
-public class PrincipalController {
-
+public class MercadoController {
 
     public void goToPrincipal() throws IOException {
         Main.setRoot("fxml/principal");
@@ -20,4 +19,5 @@ public class PrincipalController {
     public void goToCartera() throws IOException{
         Main.setRoot("fxml/cartera");
     }
+
 }

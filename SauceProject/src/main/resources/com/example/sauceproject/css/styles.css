@@ -35,7 +35,7 @@
     -fx-padding: 10 20;
 }
 .button.principal:hover{
-     -fx-text-fill: #00FF00;
+     -fx-text-fill: #55734F;
 }
 .button.principal:pressed {
     -fx-background-color: rgba(255, 255, 255, 0.4);
@@ -104,6 +104,65 @@
     -fx-text-fill: #999;
 }
 
+
+
+
+
+
+/*------------------Mercado--------------------------------------*/
+.table-view {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:even {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: transparent;
+}
+
+.table-cell {
+    -fx-background-color: transparent;
+}
+
+.table-column {
+    -fx-background-color: transparent;
+}
+
+.table-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+
+
+
+.scroll-pane {
+    -fx-background-color:  #242529;
+    -fx-background-radius: 10px;
+
+}
+
+.scroll-pane .viewport {
+    -fx-background-color:  #242529;
+}
 
 
 

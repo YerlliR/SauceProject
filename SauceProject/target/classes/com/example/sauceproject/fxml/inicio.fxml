@@ -12,7 +12,7 @@
             <Image url="@../img/SAUCE%20WALLET.png" />
          </image>
       </ImageView>
-      <Button layoutX="663.0" layoutY="825.0" mnemonicParsing="false" onAction="#CambiarLogIn" prefHeight="46.0" prefWidth="575.0" text="Iniciar Sesion" />
+      <Button layoutX="663.0" layoutY="844.0" mnemonicParsing="false" onAction="#CambiarLogIn" prefHeight="46.0" prefWidth="575.0" text="Iniciar Sesion" />
       <Button layoutX="663.0" layoutY="914.0" mnemonicParsing="false" onAction="#CambiarSignIn" prefHeight="46.0" prefWidth="575.0" text="Registrarse" />
    </children>
 </AnchorPane>
