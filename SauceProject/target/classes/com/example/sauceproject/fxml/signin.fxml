@@ -19,19 +19,19 @@
                </image>
             </ImageView>
             <Label layoutX="32.0" layoutY="114.0" stylesheets="@../css/styles.css" text="Usuario:" />
-            <TextField layoutX="50.0" layoutY="147.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="34.0" />
-            <PasswordField layoutX="50.0" layoutY="220.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" />
+            <TextField fx:id="user" layoutX="50.0" layoutY="147.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="34.0" />
+            <PasswordField fx:id="contrasenya" layoutX="50.0" layoutY="220.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" />
             <Label layoutX="32.0" layoutY="188.0" stylesheets="@../css/styles.css" text="Contraseña:" />
             <Button layoutX="42.0" layoutY="635.0" mnemonicParsing="false" onAction="#Volver" prefHeight="38.0" prefWidth="353.0" text="Volver" />
-            <PasswordField layoutX="50.0" layoutY="293.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" />
+            <PasswordField fx:id="confirmContraseña" layoutX="50.0" layoutY="293.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" />
             <Label layoutX="32.0" layoutY="261.0" stylesheets="@../css/styles.css" text="Confirmar contraseña:" />
             <Label layoutX="32.0" layoutY="334.0" stylesheets="@../css/styles.css" text="Nombre:" />
-            <TextField layoutX="50.0" layoutY="367.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
+            <TextField fx:id="name" layoutX="50.0" layoutY="367.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
             <Label layoutX="32.0" layoutY="408.0" stylesheets="@../css/styles.css" text="Apellidos:" />
-            <TextField layoutX="50.0" layoutY="441.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
+            <TextField fx:id="lastName" layoutX="50.0" layoutY="441.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
             <Label layoutX="32.0" layoutY="482.0" stylesheets="@../css/styles.css" text="Correo electronico:" />
-            <TextField layoutX="50.0" layoutY="515.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
-            <Button layoutX="40.0" layoutY="579.0" mnemonicParsing="false" onAction="#Iniciar" prefHeight="38.0" prefWidth="353.0" text="Siguiente" />
+            <TextField fx:id="Correo" layoutX="50.0" layoutY="515.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" />
+            <Button layoutX="40.0" layoutY="579.0" mnemonicParsing="false" onAction="#guardarDatoEnBaseDeDatos" prefHeight="38.0" prefWidth="353.0" text="Siguiente" />
          </children>
       </AnchorPane>
    </children>
