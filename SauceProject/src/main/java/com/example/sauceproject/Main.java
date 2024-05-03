@@ -1,13 +1,14 @@
 package com.example.sauceproject;
 
-//import org.python.util.PythonInterpreter;
-//import org.python.core.PyObject;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+
 import java.io.IOException;
+
 
 public class Main extends Application {
     private static Scene scene;
@@ -29,20 +30,10 @@ public class Main extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
 
 
 
-        /*PythonInterpreter interpreter = new PythonInterpreter();
-
-        // Ejecutar el script de Python
-        interpreter.exec("from mi_script import saludar");
-
-        // Obtener una referencia a la función de Python
-        PyObject saludarFunc = interpreter.get("saludar");
-
-        // Llamar a la función de Python y obtener el resultado
-        PyObject resultado = saludarFunc.__call__("Juan");*/
     }
 }
