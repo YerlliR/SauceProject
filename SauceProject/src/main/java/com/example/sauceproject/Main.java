@@ -15,8 +15,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("fxml/inicio"), 600, 400);
+        scene = new Scene(loadFXML("fxml/inicio"), 1900, 1080);
         stage.setScene(scene);
+        stage.setTitle("¡Sauce Wallet!");
         stage.show();
     }
 

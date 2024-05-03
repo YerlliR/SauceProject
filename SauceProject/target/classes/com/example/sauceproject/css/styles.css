@@ -1,5 +1,6 @@
+/*------------------GENERAL--------------------------------------*/
 .anchor-pane {
-    -fx-background-color: #2b2a33 ;
+    -fx-background-color: #1e1f22;
 }
 
 .button {
@@ -11,37 +12,88 @@
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 0);
 }
-
 .button:hover {
     -fx-background-color: #4d4d4d;
 }
-
 .button:pressed {
     -fx-background-color: #1a1a1a;
 }
-
-
-
-.label.inicioSesion {
-
-    -fx-text-align: left;
-    -fx-font-family: Arial Black;
-    -fx-font-weight: bold;
-    -fx-font-size: 30px;
+.label{
     -fx-text-fill: white;
-    -fx-text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    -fx-font-size: 15px;
+    -fx-padding: 10 20;
 }
 
+
+
+/*------------------PRINCIPAL--------------------------------------*/
+.button.principal {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-padding: 10 20;
+}
+.button.principal:hover{
+     -fx-text-fill: #00FF00;
+}
+.button.principal:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+
+.button.intencion {
+      -fx-font-family: 'Roboto', sans-serif;
+      -fx-font-size: 17px;
+      -fx-font-weight: 700;
+      -fx-background-color: #55734F;
+      -fx-padding: 10px 20px;
+      -fx-border: none;
+      -fx-border-radius: 5px;
+      -fx-text-align: center;
+      -fx-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      -fx-cursor: pointer;
+}
+
+
+. button.intencion:hover {
+
+  -fx-background-color: #242529;
+
+}
+
+
+
+
+.label.tituloPrincipal {
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-size: 60px;
+    -fx-font-weight: 700;
+    -fx-text-fill: white;
+    -fx-text-align: center;
+    -fx-padding: 20px;
+    -fx-border-radius: 5px;
+    -fx-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.label.dinero{
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-padding: 10 20;
+}
+
+/*------------------INICIO SESION--------------------------------------*/
+
 .text-field.inicioSesion {
-    -fx-width: 300px;
-    -fx-background-color: #333;
+    -fx-background-color: transparent;
     -fx-border: 2px solid #555;
     -fx-border-radius: 5px;
     -fx-border-color: white;
     -fx-padding: 10px;
     -fx-box-sizing: border-box;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
+    -fx-font-size: 15px;
     -fx-outline: none;
 
 }
@@ -52,11 +104,14 @@
     -fx-text-fill: #999;
 }
 
-.label.SignIn{
-        -fx-text-align: left;
-        -fx-font-family: Arial Black;
-        -fx-font-weight: bold;
-        -fx-font-size: 20px;
-        -fx-text-fill: white;
-        -fx-text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-}
+
+
+
+
+
+
+
+
+
+
+
