@@ -113,10 +113,17 @@
 .table-view {
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
+    -fx-text-fill: #FFFFFF; /* Color del texto */
 }
 
 .table-row-cell {
     -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF; /* Color del texto */
+}
+
+.table-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF; /* Color del texto */
 }
 
 .table-row-cell:even {
@@ -124,10 +131,6 @@
 }
 
 .table-row-cell:odd {
-    -fx-background-color: transparent;
-}
-
-.table-cell {
     -fx-background-color: transparent;
 }
 
@@ -157,13 +160,12 @@
 .scroll-pane {
     -fx-background-color:  #242529;
     -fx-background-radius: 10px;
-
+    -fx-text-fill: #FFFFFF; /* Color del texto */
 }
 
 .scroll-pane .viewport {
     -fx-background-color:  #242529;
 }
-
 
 
 
