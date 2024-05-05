@@ -100,14 +100,14 @@
          <center>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <content>
-                  <TableView fx:id="tableView" prefHeight="918.0" prefWidth="1495.0">
+                  <TableView fx:id="tableView" prefHeight="918.0" prefWidth="1480.0">
                     <columns>
                       <TableColumn fx:id="cmcRankColumn" prefWidth="60.0" text="#" />
                       <TableColumn fx:id="nameColumn" prefWidth="235.0" text="Nombre" />
                         <TableColumn fx:id="symbolColumn" prefWidth="200.0" text="Symbol" />
                         <TableColumn fx:id="priceColumn" prefWidth="300.0" text="Price" />
                         <TableColumn fx:id="percentChangeColumn" prefWidth="200.0" text="Rentabilidad 24h" />
-                        <TableColumn fx:id="marketCapColumn" prefWidth="500.0" text="Market Cap" />
+                        <TableColumn fx:id="marketCapColumn" prefWidth="483.0" text="Market Cap" />
                     </columns>
                   </TableView>
                </content>

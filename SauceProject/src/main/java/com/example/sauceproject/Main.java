@@ -1,4 +1,5 @@
 package com.example.sauceproject;
+import com.example.sauceproject.ext.*;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Main extends Application {
@@ -31,6 +34,14 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                jsonDowload.ejecut();
+                baseDatosCrypt.magic();
+            }
+        }, 0, 5 * 60 * 1000);
         launch();
     }
 }

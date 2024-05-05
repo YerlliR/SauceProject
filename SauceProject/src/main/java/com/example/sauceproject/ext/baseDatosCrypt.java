@@ -11,8 +11,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class Main {
-    public static void main(String[] args) {
+public class baseDatosCrypt {
+    public static void magic() {
         String filePath = "SauceProject/src/main/resources/com/example/sauceproject/json/data.json";
 
         try {
