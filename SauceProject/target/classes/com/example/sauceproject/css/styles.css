@@ -103,24 +103,18 @@
 }
 
 
-
-
-
-
 /*------------------Mercado--------------------------------------*/
 .table-view {
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
-    -fx-padding: 0;
-    -fx-border-width: 0;
 }
 
 .table-row-cell,
 .table-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #FFFFFF; /* Color del texto */
-    -fx-font-size: 18px; /* Tamaño de la fuente */
-    -fx-alignment: center-right; /* Alineación a la derecha */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
+    -fx-alignment: center-right;
     -fx-padding: 0;
     -fx-border-width: 0;
 }
@@ -136,20 +130,6 @@
 .table-view .column-header-background,
 .table-view .column-header {
     -fx-background-color: transparent;
-}
-
-
-
-
-
-.scroll-pane {
-    -fx-background-color:  #242529;
-    -fx-background-radius: 10px;
-    -fx-text-fill: #FFFFFF; /* Color del texto */
-}
-
-.scroll-pane .viewport {
-    -fx-background-color:  #242529;
 }
 
 

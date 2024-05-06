@@ -110,8 +110,8 @@
                     <columns>
                       <TableColumn fx:id="cmcRankColumn" prefWidth="60.0" text="#" />
                       <TableColumn fx:id="nameColumn" prefWidth="235.0" text="Nombre" />
-                        <TableColumn fx:id="symbolColumn" prefWidth="200.0" text="Symbol" />
-                        <TableColumn fx:id="priceColumn" prefWidth="300.0" text="Price" />
+                        <TableColumn fx:id="symbolColumn" prefWidth="200.0" text="Simbolo" />
+                        <TableColumn fx:id="priceColumn" prefWidth="300.0" text="Precio" />
                         <TableColumn fx:id="percentChangeColumn" prefWidth="200.0" text="Rentabilidad 24h" />
                         <TableColumn fx:id="marketCapColumn" prefWidth="489.0" text="Market Cap" />
                     </columns>
