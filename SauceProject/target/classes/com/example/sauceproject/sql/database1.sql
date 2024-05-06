@@ -18,7 +18,7 @@ CREATE TABLE currencies (
     name VARCHAR(255),
     symbol VARCHAR(10),
     cmc_rank INT,
-    last_updated VARCHAR(30), -- Cambia el tipo de datos a VARCHAR
+    last_updated VARCHAR(30),
     price DECIMAL(20, 10),
     percent_change_24h DECIMAL(10, 5),
     market_cap DECIMAL(30, 10)

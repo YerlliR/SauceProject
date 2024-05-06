@@ -52,7 +52,6 @@
       -fx-border: none;
       -fx-border-radius: 5px;
       -fx-text-align: center;
-      -fx-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
       -fx-cursor: pointer;
 }
 
@@ -74,7 +73,6 @@
     -fx-text-align: center;
     -fx-padding: 20px;
     -fx-border-radius: 5px;
-    -fx-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .label.dinero{
@@ -113,14 +111,18 @@
 .table-view {
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
+    -fx-padding: 0;
+    -fx-border-width: 0;
 }
 
 .table-row-cell,
 .table-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #FFFFFF; /* Color del texto */
-    -fx-font-size: 14px; /* Tamaño de la fuente */
+    -fx-font-size: 18px; /* Tamaño de la fuente */
     -fx-alignment: center-right; /* Alineación a la derecha */
+    -fx-padding: 0;
+    -fx-border-width: 0;
 }
 
 .table-row-cell:even,

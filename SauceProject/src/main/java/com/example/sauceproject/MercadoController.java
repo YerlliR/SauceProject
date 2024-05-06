@@ -1,5 +1,7 @@
 package com.example.sauceproject;
 
+import com.example.sauceproject.ext.baseDatosCrypt;
+import com.example.sauceproject.ext.jsonDowload;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -9,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MercadoController implements Initializable {
 
@@ -69,36 +73,42 @@ public class MercadoController implements Initializable {
 
 
     private void cargarDatos() {
-        try {
-            // Establecer conexión con la base de datos
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/SaucerWallet", "root", "123123");
-            Statement statement = connection.createStatement();
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    // Establecer conexión con la base de datos
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/SaucerWallet", "root", "123123");
+                    Statement statement = connection.createStatement();
 
-            // Ejecutar la consulta SQL
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM currencies ORDER BY market_cap DESC");
+                    // Ejecutar la consulta SQL
+                    ResultSet resultSet = statement.executeQuery("SELECT * FROM currencies ORDER BY market_cap DESC");
 
-            // Limpiar la TableView antes de agregar nuevos datos
-            tableView.getItems().clear();
+                    // Limpiar la TableView antes de agregar nuevos datos
+                    tableView.getItems().clear();
 
-            // Obtener los datos de la consulta y agregarlos a la TableView
-            while (resultSet.next()) {
-                int cmc_rank = resultSet.getInt("cmc_rank");
-                String name = resultSet.getString("name");
-                String symbol = resultSet.getString("symbol");
-                double price = resultSet.getDouble("price");
-                double percentChange = resultSet.getDouble("percent_change_24h");
-                double marketCap = resultSet.getDouble("market_cap");
+                    // Obtener los datos de la consulta y agregarlos a la TableView
+                    while (resultSet.next()) {
+                        int cmc_rank = resultSet.getInt("cmc_rank");
+                        String name = resultSet.getString("name");
+                        String symbol = resultSet.getString("symbol");
+                        double price = resultSet.getDouble("price");
+                        double percentChange = resultSet.getDouble("percent_change_24h");
+                        double marketCap = resultSet.getDouble("market_cap");
 
-                tableView.getItems().add(new Currency(cmc_rank, name, symbol, price, percentChange, marketCap));
+                        tableView.getItems().add(new Currency(cmc_rank, name, symbol, price, percentChange, marketCap));
+                    }
+
+
+                    resultSet.close();
+                    statement.close();
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
-
-
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        }, 0, 5* 1000);
     }
 }
 
