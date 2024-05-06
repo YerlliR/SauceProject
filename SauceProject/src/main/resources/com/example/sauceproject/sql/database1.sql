@@ -19,9 +19,9 @@ CREATE TABLE currencies (
     symbol VARCHAR(10),
     cmc_rank INT,
     last_updated VARCHAR(30),
-    price DECIMAL(20, 10),
-    percent_change_24h DECIMAL(10, 5),
-    market_cap DECIMAL(30, 10)
+    price DECIMAL(20, 2),
+    percent_change_24h DECIMAL(10, 2),
+    market_cap DECIMAL(30, 2)
 );
 
 select * from currencies order by market_cap DESC;

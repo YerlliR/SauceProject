@@ -12,10 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.control.TableCell?>
-<?import javafx.scene.paint.Color?>
 
-<?import com.example.sauceproject.NumberCell?>
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="600.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.MercadoController">
    <children>
       <BorderPane layoutX="515.0" layoutY="215.0" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -113,17 +110,9 @@
                     <columns>
                       <TableColumn fx:id="cmcRankColumn" prefWidth="60.0" text="#" />
                       <TableColumn fx:id="nameColumn" prefWidth="235.0" text="Nombre" />
-                        <TableColumn fx:id="symbolColumn" prefWidth="200.0" text="Symbol" />
-                        <TableColumn fx:id="percentChangeColumn" prefWidth="200.0" text="Rentabilidad 24h">
-                            <cellFactory>
-                                <NumberCell />
-                            </cellFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="priceColumn" prefWidth="300.0" text="Price">
-                            <cellFactory>
-                                <NumberCell />
-                            </cellFactory>
-                        </TableColumn>
+                        <TableColumn fx:id="symbolColumn" prefWidth="200.0" text="Simbolo" />
+                        <TableColumn fx:id="priceColumn" prefWidth="300.0" text="Precio" />
+                        <TableColumn fx:id="percentChangeColumn" prefWidth="200.0" text="Rentabilidad 24h" />
                         <TableColumn fx:id="marketCapColumn" prefWidth="489.0" text="Market Cap" />
                     </columns>
                   </TableView>

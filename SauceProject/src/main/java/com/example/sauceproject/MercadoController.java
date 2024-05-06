@@ -1,7 +1,6 @@
 package com.example.sauceproject;
 
-import com.example.sauceproject.ext.baseDatosCrypt;
-import com.example.sauceproject.ext.jsonDowload;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -34,11 +33,6 @@ public class MercadoController implements Initializable {
 
 
 
-
-
-
-
-
     @FXML
     private TableView<Currency> tableView;
 
@@ -60,6 +54,8 @@ public class MercadoController implements Initializable {
     private TableColumn<Currency, Double> marketCapColumn;
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
+
         cmcRankColumn.setCellValueFactory(cellData -> cellData.getValue().cmcRankProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         symbolColumn.setCellValueFactory(cellData -> cellData.getValue().symbolProperty());
@@ -97,6 +93,10 @@ public class MercadoController implements Initializable {
                         double percentChange = resultSet.getDouble("percent_change_24h");
                         double marketCap = resultSet.getDouble("market_cap");
 
+
+                        //NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.US);
+                        //String precioConSimbolo = formatoMoneda.format(price);
+
                         tableView.getItems().add(new Currency(cmc_rank, name, symbol, price, percentChange, marketCap));
                     }
 
@@ -108,7 +108,7 @@ public class MercadoController implements Initializable {
                     e.printStackTrace();
                 }
             }
-        }, 0, 5* 1000);
+        }, 0, 60 * 1000);
     }
 }
 

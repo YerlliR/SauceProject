@@ -9,7 +9,7 @@ public class jsonDowload {
 
     public static void ejecut() {
         String url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=e3db4799-68cd-45e1-b4dd-af265faf8552";
-        String filePath = "SauceProject/src/main/resources/com/example/sauceproject/json/data.json";
+        String filePath = "data.json";
 
         try {
             downloadFile(url, filePath);
