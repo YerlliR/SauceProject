@@ -13,7 +13,7 @@ import com.google.gson.JsonParser;
 
 public class baseDatosCrypt {
     public static void magic() {
-        String filePath = "src/main/resources/com/example/sauceproject/json/data.json";
+        String filePath = "SauceProject/src/main/resources/com/example/sauceproject/json/data.json";
 
         try {
             // Leer el contenido del archivo JSON

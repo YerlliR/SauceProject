@@ -794,7 +794,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="224" parent="1" name="SaucerWallet">
-      <LastIntrospectionLocalTimestamp>2024-05-03.23:23:01</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-06.20:43:39</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="225" parent="1" name="information_schema">
@@ -906,11 +906,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>6</Position>
     </column>
     <column id="251" parent="235" name="percent_change_24h">
-      <DasType>decimal(10,5 digit)|0s</DasType>
+      <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>7</Position>
     </column>
     <column id="252" parent="235" name="market_cap">
-      <DasType>decimal(30,10 digit)|0s</DasType>
+      <DasType>decimal(40,20 digit)|0s</DasType>
       <Position>8</Position>
     </column>
     <index id="253" parent="235" name="PRIMARY">
