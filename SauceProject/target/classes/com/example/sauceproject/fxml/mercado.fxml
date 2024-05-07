@@ -106,7 +106,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="tableView" layoutY="1.0" prefHeight="920.0" prefWidth="1497.0" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableView" layoutY="1.0" onMouseClicked="#accion" prefHeight="920.0" prefWidth="1497.0" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="cmcRankColumn" editable="false" prefWidth="60.0" sortable="false" text="#" />
                       <TableColumn fx:id="nameColumn" editable="false" prefWidth="235.0" sortable="false" text="Nombre" />

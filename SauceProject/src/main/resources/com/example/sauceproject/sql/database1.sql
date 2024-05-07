@@ -32,7 +32,7 @@ CREATE TABLE transacciones (
     idUsuario INT,
     idCrypto INT,
     precioCompra DECIMAL(20, 15) NOT NULL,
-    fechaDeCompra DATE DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (idUsuario) REFERENCES Usuarios(id), 
-    FOREIGN KEY (idCrypto) REFERENCES currencies(id) 
+    fechaDeCompra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios(id),
+    FOREIGN KEY (idCrypto) REFERENCES currencies(id)
 );

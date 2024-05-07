@@ -794,7 +794,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="224" parent="1" name="SaucerWallet">
-      <LastIntrospectionLocalTimestamp>2024-05-07.09:52:03</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-07.22:25:43</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="225" parent="1" name="information_schema">
@@ -834,91 +834,147 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
-    <column id="236" parent="234" name="id">
+    <table id="236" parent="224" name="transacciones">
+      <Engine>InnoDB</Engine>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </table>
+    <column id="237" parent="234" name="id">
       <AutoIncrement>2</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="237" parent="234" name="Nombre">
+    <column id="238" parent="234" name="Nombre">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="238" parent="234" name="Apellidos">
+    <column id="239" parent="234" name="Apellidos">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="239" parent="234" name="CorreoElectronico">
+    <column id="240" parent="234" name="CorreoElectronico">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="240" parent="234" name="Usuario">
+    <column id="241" parent="234" name="Usuario">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="241" parent="234" name="Contraseña">
+    <column id="242" parent="234" name="Contraseña">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="242" parent="234" name="TipoUsuario">
+    <column id="243" parent="234" name="TipoUsuario">
       <DasType>tinyint(1)|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <Position>7</Position>
     </column>
-    <index id="243" parent="234" name="PRIMARY">
+    <index id="244" parent="234" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="244" parent="234" name="PRIMARY">
+    <key id="245" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="245" parent="235" name="id">
+    <column id="246" parent="235" name="id">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="246" parent="235" name="name">
+    <column id="247" parent="235" name="name">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="247" parent="235" name="symbol">
+    <column id="248" parent="235" name="symbol">
       <DasType>varchar(10)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="248" parent="235" name="cmc_rank">
+    <column id="249" parent="235" name="cmc_rank">
       <DasType>int(11)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="249" parent="235" name="last_updated">
+    <column id="250" parent="235" name="last_updated">
       <DasType>varchar(30)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="250" parent="235" name="price">
+    <column id="251" parent="235" name="price">
       <DasType>decimal(20,10 digit)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="251" parent="235" name="percent_change_24h">
+    <column id="252" parent="235" name="percent_change_24h">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="252" parent="235" name="market_cap">
+    <column id="253" parent="235" name="market_cap">
       <DasType>decimal(40,2 digit)|0s</DasType>
       <Position>8</Position>
     </column>
-    <index id="253" parent="235" name="PRIMARY">
+    <index id="254" parent="235" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="254" parent="235" name="PRIMARY">
+    <key id="255" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="256" parent="236" name="id">
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="257" parent="236" name="idUsuario">
+      <DasType>int(11)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="258" parent="236" name="idCrypto">
+      <DasType>int(11)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="259" parent="236" name="precioCompra">
+      <DasType>decimal(20,15 digit)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="260" parent="236" name="fechaDeCompra">
+      <DasType>timestamp|0s</DasType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="261" parent="236" name="transacciones_ibfk_1">
+      <ColNames>idUsuario</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>Usuarios</RefTableName>
+    </foreign-key>
+    <foreign-key id="262" parent="236" name="transacciones_ibfk_2">
+      <ColNames>idCrypto</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>currencies</RefTableName>
+    </foreign-key>
+    <index id="263" parent="236" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="264" parent="236" name="idUsuario">
+      <ColNames>idUsuario</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="265" parent="236" name="idCrypto">
+      <ColNames>idCrypto</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="266" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

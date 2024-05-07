@@ -124,3 +124,39 @@
 .table-view .column-header {
     -fx-background-color: transparent;
 }
+
+/*------------------Compra--------------------------------------*/
+
+.menuCompra{
+    -fx-background-color: transparent;
+    -fx-font-size: 17px;
+}
+
+.election{
+    -fx-underline: true;
+    -fx-font-weight: bold;
+}
+
+
+/* styles.css */
+
+.split-menu-button .label {
+    -fx-background-color: transparent;
+}
+
+.split-menu-button, .split-menu-button .menu-item {
+    -fx-background-color: transparent; /* Hacer el fondo transparente */
+    -fx-text-fill: white; /* Color del texto */
+    -fx-border-color: white; /* Color del borde */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-background-radius: 5px; /* Redondear los bordes */
+}
+
+.split-menu-button .split-menu-button-menu-item:hover {
+    -fx-background-color: transparent; /* Hacer el fondo del ítem del menú emergente transparente */
+    -fx-text-fill: white; /* Color del texto del ítem del menú emergente */
+}
+
+.split-menu-button .arrow-button {
+    -fx-background-color: transparent; /* Hacer transparente el botón de flecha */
+}

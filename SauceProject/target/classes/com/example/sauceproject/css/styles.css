@@ -25,7 +25,6 @@
 }
 
 
-
 /*------------------PRINCIPAL--------------------------------------*/
 .button.principal {
     -fx-background-color: transparent;
@@ -41,8 +40,6 @@
     -fx-background-color: rgba(255, 255, 255, 0.4);
 }
 
-
-
 .button.intencion {
       -fx-font-family: 'Roboto', sans-serif;
       -fx-font-size: 17px;
@@ -55,15 +52,11 @@
       -fx-cursor: pointer;
 }
 
-
 . button.intencion:hover {
 
   -fx-background-color: #242529;
 
 }
-
-
-
 
 .label.tituloPrincipal {
     -fx-font-family: 'Roboto', sans-serif;
@@ -115,6 +108,7 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 18px;
     -fx-alignment: center-right;
+    -fx-padding: 0;
     -fx-border-width: 0;
 }
 
@@ -131,24 +125,38 @@
     -fx-background-color: transparent;
 }
 
+/*------------------Compra--------------------------------------*/
 
-
-
-.table-row-cell .text {
-    -fx-padding: 100px 0; /* Ajusta este valor según la separación deseada */
-    -fx-alignment: center-right;
+.menuCompra{
+    -fx-background-color: transparent;
+    -fx-font-size: 17px;
 }
 
-.table-row-cell .graphic {
-    -fx-padding: 100px 0; /* Ajusta este valor según la separación deseada */
-    -fx-alignment: center-right;
+.election{
+    -fx-underline: true;
+    -fx-font-weight: bold;
 }
 
 
+/* styles.css */
 
+.split-menu-button .label {
+    -fx-background-color: transparent;
+}
 
+.split-menu-button, .split-menu-button .menu-item {
+    -fx-background-color: transparent; /* Hacer el fondo transparente */
+    -fx-text-fill: white; /* Color del texto */
+    -fx-border-color: white; /* Color del borde */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-background-radius: 5px; /* Redondear los bordes */
+}
 
+.split-menu-button .split-menu-button-menu-item:hover {
+    -fx-background-color: transparent; /* Hacer el fondo del ítem del menú emergente transparente */
+    -fx-text-fill: white; /* Color del texto del ítem del menú emergente */
+}
 
-
-
-
+.split-menu-button .arrow-button {
+    -fx-background-color: transparent; /* Hacer transparente el botón de flecha */
+}

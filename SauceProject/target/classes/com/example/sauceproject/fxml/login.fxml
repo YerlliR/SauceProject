@@ -22,8 +22,8 @@
             <TextField fx:id="usu" layoutX="42.0" layoutY="232.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" stylesheets="@../css/styles.css" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" />
             <PasswordField fx:id="pass" layoutX="42.0" layoutY="327.0" prefHeight="41.0" prefWidth="353.0" styleClass="inicioSesion" />
             <Label layoutX="24.0" layoutY="295.0" stylesheets="@../css/styles.css" text="Contraseña:" />
-            <Button layoutX="42.0" layoutY="427.0" mnemonicParsing="false" onAction="#Iniciar" prefHeight="38.0" prefWidth="353.0" text="Iniciar sesion" />
-            <Button layoutX="42.0" layoutY="495.0" mnemonicParsing="false" onAction="#Volver" prefHeight="38.0" prefWidth="353.0" text="Volver" />
+            <Button layoutX="42.0" layoutY="543.0" mnemonicParsing="false" onAction="#Iniciar" prefHeight="38.0" prefWidth="353.0" text="Iniciar sesion" />
+            <Button layoutX="42.0" layoutY="608.0" mnemonicParsing="false" onAction="#Volver" prefHeight="38.0" prefWidth="353.0" text="Volver" />
          </children>
       </AnchorPane>
    </children>

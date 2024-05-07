@@ -5,7 +5,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
@@ -32,6 +34,19 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
+
+    static void abrirVentana(String fxml) throws IOException {
+        Stage newStage = new Stage();
+        Parent root = loadFXML(fxml);
+        Scene newScene = new Scene(root);
+        newStage.initModality(Modality.WINDOW_MODAL);
+        newStage.initOwner(scene.getWindow());
+        newStage.initStyle(StageStyle.UNDECORATED);
+        newStage.setScene(newScene);
+        newStage.show();
+    }
+
 
     public static void main(String[] args) throws IOException {
         Timer timer = new Timer();
