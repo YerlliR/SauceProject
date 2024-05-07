@@ -1,5 +1,6 @@
 package com.example.sauceproject;
 
+import com.example.sauceproject.ext.conexionBaseDatos;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -16,19 +17,14 @@ public class loginController {
     private TextField pass;
 
 
-    public void Iniciar() throws IOException {
+    public void Iniciar() throws IOException, SQLException {
 
-
-        String url = "jdbc:mysql://localhost:3306/SaucerWallet";
-        String usuario = "root";
-        String contraseña = "123123";
-
-
+        Connection connection = conexionBaseDatos.conexion();
         String user = usu.getText();
         String contra = pass.getText();
 
 
-        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+        try (connection) {
             String query = "SELECT * FROM Usuarios WHERE Usuario = ? AND Contraseña = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user);

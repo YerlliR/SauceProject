@@ -21,7 +21,7 @@ public class baseDatosCrypt {
             JsonArray dataArray = jsonObject.getAsJsonArray("data");
 
             // Establecer conexión con la base de datos
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/SaucerWallet", "root", "123123");
+            Connection connection = conexionBaseDatos.conexion();
             clearTable(connection);
             // Instanciar Gson
             Gson gson = new Gson();

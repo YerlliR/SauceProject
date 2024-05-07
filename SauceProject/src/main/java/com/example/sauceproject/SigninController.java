@@ -1,12 +1,12 @@
 package com.example.sauceproject;
 
+import com.example.sauceproject.ext.conexionBaseDatos;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -23,10 +23,8 @@ public class SigninController {
     private TextField contrasenya;
     @FXML
     private TextField confirmContraseña;
-    public void guardarDatoEnBaseDeDatos() throws IOException {
-        String url = "jdbc:mysql://localhost:3306/SaucerWallet";
-        String usuario = "root";
-        String contraseña = "123123";
+    public void guardarDatoEnBaseDeDatos() throws IOException, SQLException {
+        Connection connection = conexionBaseDatos.conexion();
 
 
         String Nombre = name.getText();
@@ -36,8 +34,8 @@ public class SigninController {
         String Contraseña = contrasenya.getText();
         String Contraseña2 = confirmContraseña.getText();
 
-        if (contraseña.equals(Contraseña2)){
-            try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+        if (Contraseña.equals(Contraseña2)){
+            try (connection) {
 
                 String sql = "INSERT INTO Usuarios (Nombre, Apellidos, CorreoElectronico, Usuario, Contraseña) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement statement = connection.prepareStatement(sql);
@@ -64,25 +62,15 @@ public class SigninController {
 
             alert.showAndWait();
 
-
-
-
             Main.setRoot("fxml/signin");
         }
     }
-
-
-
-
-
 
     /*BOTONES*/
 
     public void Volver() throws IOException{
         Main.setRoot("fxml/inicio");
     }
-
-
 
 
 }

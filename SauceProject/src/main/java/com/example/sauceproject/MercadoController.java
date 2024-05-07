@@ -1,9 +1,11 @@
 package com.example.sauceproject;
 
 
+import com.example.sauceproject.ext.conexionBaseDatos;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
@@ -68,6 +70,49 @@ public class MercadoController implements Initializable {
         percentChangeColumn.setCellValueFactory(cellData -> cellData.getValue().percentChangeProperty().asObject());
         marketCapColumn.setCellValueFactory(cellData -> cellData.getValue().marketCapProperty().asObject());
 
+        // Format price and market cap columns
+        priceColumn.setCellFactory(tc -> new TableCell<Currency, Double>() {
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    DecimalFormat df = new DecimalFormat();
+                    if (price >= 1) {
+                        df.setMaximumFractionDigits(2);
+                    } else if (price <= 1 && price >= 0.1) {
+                        df.setMaximumFractionDigits(4);
+                    } else if (price <= 0.1 && price >= 0.01) {
+                        df.setMaximumFractionDigits(5);
+                    } else if (price <= 0.01 && price >= 0.001) {
+                        df.setMaximumFractionDigits(6);
+                    } else if (price <= 0.001 && price >= 0.0001) {
+                        df.setMaximumFractionDigits(7);
+                    } else if (price <= 0.0001 && price >= 0.00001) {
+                        df.setMaximumFractionDigits(8);
+                    } else if (price <= 0.00001 && price >= 0.000001) {
+                        df.setMaximumFractionDigits(9);
+                    } else {
+                        df.setMaximumFractionDigits(20);
+                    }
+                    setText(df.format(price));
+                }
+            }
+        });
+
+        marketCapColumn.setCellFactory(tc -> new TableCell<Currency, Double>() {
+            @Override
+            protected void updateItem(Double marketCap, boolean empty) {
+                super.updateItem(marketCap, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(String.format("%,.0f", marketCap));
+                }
+            }
+        });
+
         cargarDatos();
     }
 
@@ -78,7 +123,7 @@ public class MercadoController implements Initializable {
             @Override
             public void run() {
                 try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/SaucerWallet", "root", "123123");
+                    Connection connection = conexionBaseDatos.conexion();
                     Statement statement = connection.createStatement();
 
 
@@ -92,7 +137,7 @@ public class MercadoController implements Initializable {
                             "WHEN price <= 1 AND price >= 0.1 THEN ROUND(price, 4) " +
                             "WHEN price <= 0.1 AND price >= 0.01 THEN ROUND(price, 5) " +
                             "WHEN price <= 0.01 AND price >= 0.001 THEN ROUND(price, 6) " +
-                            "WHEN price <= 0.001 AND price >= 0.0001 THEN ROUND(price, 7) " +
+                            "WHEN price<= 0.001 AND price >= 0.0001 THEN ROUND(price, 7) " +
                             "WHEN price <= 0.0001 AND price >= 0.00001 THEN ROUND(price, 8) " +
                             "WHEN price <= 0.00001 AND price >= 0.000001 THEN ROUND(price, 9) " +
                             "ELSE ROUND(price, 20) " +
@@ -103,14 +148,8 @@ public class MercadoController implements Initializable {
                             "ORDER BY cmc_rank");
 
 
-                    // Limpiar la TableView antes de agregar nuevos datos
                     tableView.getItems().clear();
 
-                    // Formato para los valores de precio con 2 o 10 decimales
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    DecimalFormat df10 = new DecimalFormat("#.##########");
-
-                    // Obtener los datos de la consulta y agregarlos a la TableView
                     while (resultSet.next()) {
                         int cmc_rank = resultSet.getInt("cmc_rank");
                         String name = resultSet.getString("name");
@@ -119,17 +158,7 @@ public class MercadoController implements Initializable {
                         double percentChange = resultSet.getDouble("percent_change_24h");
                         double marketCap = resultSet.getDouble("market_cap");
 
-                        // Formatear el valor de price según las condiciones
-                        String formattedPrice;
-                        if (price >= 1) {
-                            formattedPrice = df.format(price);
-                        } else {
-                            formattedPrice = df10.format(price);
-                        }
-
-                        // Reemplazar la coma por un punto si es necesario
-                        formattedPrice = formattedPrice.replace(",", ".");
-                        tableView.getItems().add(new Currency(cmc_rank, name, symbol, Double.parseDouble(formattedPrice), percentChange, marketCap));
+                        tableView.getItems().add(new Currency(cmc_rank, name, symbol, price, percentChange, marketCap));
                     }
 
                     resultSet.close();
@@ -142,5 +171,3 @@ public class MercadoController implements Initializable {
         }, 0, 60 * 1000);
     }
 }
-
-

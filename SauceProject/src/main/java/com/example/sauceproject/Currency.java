@@ -14,7 +14,7 @@ public class Currency {
         this.cmcRank = new SimpleIntegerProperty(cmcRank);
         this.name = new SimpleStringProperty(name);
         this.symbol = new SimpleStringProperty(symbol);
-        this.price = new SimpleDoubleProperty(price);  // Se asigna directamente el valor double
+        this.price = new SimpleDoubleProperty(price);
         this.percentChange = new SimpleDoubleProperty(percentChange);
         this.marketCap = new SimpleDoubleProperty(marketCap);
     }
