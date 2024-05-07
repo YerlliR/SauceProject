@@ -25,3 +25,14 @@ CREATE TABLE currencies (
 );
 
 select * from currencies order by market_cap DESC;
+
+
+CREATE TABLE transacciones (
+    id INT PRIMARY KEY,
+    idUsuario INT,
+    idCrypto INT,
+    precioCompra DECIMAL(20, 15) NOT NULL,
+    fechaDeCompra DATE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios(id), 
+    FOREIGN KEY (idCrypto) REFERENCES currencies(id) 
+);
