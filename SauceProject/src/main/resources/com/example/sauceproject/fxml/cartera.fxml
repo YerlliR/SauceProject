@@ -115,7 +115,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="269.0" prefHeight="631.0" prefWidth="1502.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;">
                      <children>
-                        <TableView layoutX="450.0" layoutY="116.0" prefHeight="631.0" prefWidth="1502.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView layoutX="450.0" layoutY="116.0" prefHeight="728.0" prefWidth="1502.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn minWidth="0.0" prefWidth="57.0" text="#" />
                             <TableColumn minWidth="0.0" prefWidth="152.0" text="Nombre" />

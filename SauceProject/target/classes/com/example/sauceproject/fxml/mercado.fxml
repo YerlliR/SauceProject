@@ -106,14 +106,14 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="tableView" layoutY="1.0" prefHeight="920.0" prefWidth="1497.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableView" layoutY="1.0" prefHeight="920.0" prefWidth="1497.0" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="cmcRankColumn" prefWidth="60.0" text="#" />
-                      <TableColumn fx:id="nameColumn" prefWidth="235.0" text="Nombre" />
-                        <TableColumn fx:id="symbolColumn" prefWidth="200.0" text="Simbolo" />
-                        <TableColumn fx:id="priceColumn" prefWidth="300.0" text="Precio" />
-                        <TableColumn fx:id="percentChangeColumn" prefWidth="200.0" text="Rentabilidad 24h" />
-                        <TableColumn fx:id="marketCapColumn" prefWidth="489.0" text="Market Cap" />
+                      <TableColumn fx:id="cmcRankColumn" editable="false" prefWidth="60.0" sortable="false" text="#" />
+                      <TableColumn fx:id="nameColumn" editable="false" prefWidth="235.0" sortable="false" text="Nombre" />
+                        <TableColumn fx:id="symbolColumn" editable="false" prefWidth="200.0" sortable="false" text="Simbolo" />
+                        <TableColumn fx:id="priceColumn" editable="false" prefWidth="300.0" sortable="false" text="Precio" />
+                        <TableColumn fx:id="percentChangeColumn" editable="false" prefWidth="200.0" sortable="false" text="Rentabilidad 24h" />
+                        <TableColumn fx:id="marketCapColumn" editable="false" prefWidth="489.0" sortable="false" text="Market Cap" />
                     </columns>
                   </TableView>
                </children>

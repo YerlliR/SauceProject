@@ -25,7 +25,6 @@
 }
 
 
-
 /*------------------PRINCIPAL--------------------------------------*/
 .button.principal {
     -fx-background-color: transparent;
@@ -41,8 +40,6 @@
     -fx-background-color: rgba(255, 255, 255, 0.4);
 }
 
-
-
 .button.intencion {
       -fx-font-family: 'Roboto', sans-serif;
       -fx-font-size: 17px;
@@ -55,15 +52,11 @@
       -fx-cursor: pointer;
 }
 
-
 . button.intencion:hover {
 
   -fx-background-color: #242529;
 
 }
-
-
-
 
 .label.tituloPrincipal {
     -fx-font-family: 'Roboto', sans-serif;
@@ -131,13 +124,3 @@
 .table-view .column-header {
     -fx-background-color: transparent;
 }
-
-
-
-
-
-
-
-
-
-
