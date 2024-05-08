@@ -794,7 +794,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="224" parent="1" name="SaucerWallet">
-      <LastIntrospectionLocalTimestamp>2024-05-08.23:10:08</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-08.23:15:11</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="225" parent="1" name="information_schema">
@@ -996,12 +996,16 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <index id="272" parent="237" name="PRIMARY">
+    <column id="272" parent="237" name="link">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <index id="273" parent="237" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="273" parent="237" name="PRIMARY">
+    <key id="274" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

@@ -42,8 +42,10 @@ CREATE TABLE transacciones (
 CREATE TABLE webViewrGraph (
     id INT PRIMARY KEY,
     symbol VARCHAR(10),
-    cmc_rank INT
+    cmc_rank INT,
+    link VARCHAR(255)
 );
+
 
 INSERT INTO webViewrGraph (id, symbol, cmc_rank)
 SELECT id, symbol, cmc_rank
@@ -62,3 +64,125 @@ FROM webViewrGraph cg
 JOIN currencies c ON cg.id = c.id AND cg.symbol = c.symbol
 ORDER BY cg.cmc_rank
 LIMIT 30;
+
+
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=BINANCE%3ABTCUSDTUSD'
+WHERE symbol = 'BTC';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AETHUSDUSD'
+WHERE symbol = 'ETH';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AUSDTUSDUSD'
+WHERE symbol = 'USDT';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ABNBUSDUSD'
+WHERE symbol = 'BNB';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ASOLUSD'
+WHERE symbol = 'SOL';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AUSDCUSD'
+WHERE symbol = 'USDC';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AXRPUSD'
+WHERE symbol = 'XRP';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ADOGEUSD'
+WHERE symbol = 'DOGE';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ATONUSD'
+WHERE symbol = 'TON';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AADAUSD'
+WHERE symbol = 'ADA';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ASHIBUSD'
+WHERE symbol = 'SHIB';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AAVAXUSD'
+WHERE symbol = 'AVAX';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ATRXUSD'
+WHERE symbol = 'TRX';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ADOTUSD'
+WHERE symbol = 'DOT';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ABCHUSD'
+WHERE symbol = 'BCH';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ALINKUSD'
+WHERE symbol = 'LINK';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ANEARUSD'
+WHERE symbol = 'NEAR';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AMATICUSD'
+WHERE symbol = 'MATIC';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ALTCUSD'
+WHERE symbol = 'LTC';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AICPUSD'
+WHERE symbol = 'ICP';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ALEUSD'
+WHERE symbol = 'LEO';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ADAIUSD'
+WHERE symbol = 'DAI';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AUNIUSD'
+WHERE symbol = 'UNI';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AETCUSD'
+WHERE symbol = 'ETC';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ARNDRUSD'
+WHERE symbol = 'RNDR';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AFDUSD'
+WHERE symbol = 'FDUSD';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AHBARUSD'
+WHERE symbol = 'HBAR';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AAPTUSD'
+WHERE symbol = 'APT';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AATOMUSD'
+WHERE symbol = 'ATOM';
+
+UPDATE webViewrGraph
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ACROUSD'
+WHERE symbol = 'CRO';

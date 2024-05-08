@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="354d2399-047c-4ccb-993a-e5c40717a10c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/java/com/example/sauceproject/GraficasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/java/com/example/sauceproject/GraficasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/fxml/graficas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/fxml/graficas.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/json/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/json/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e702d4bd-fff9-431b-888a-cdcff228c0b5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e702d4bd-fff9-431b-888a-cdcff228c0b5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/sql/database1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/sql/database1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/GraficasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/GraficasController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/fxml/graficas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/fxml/graficas.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/json/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/json/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/sql/database1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/sql/database1.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
