@@ -23,8 +23,8 @@ public class MercadoController implements Initializable {
         Main.setRoot("fxml/principal");
     }
 
-    public void goToComprar() throws IOException {
-        Main.setRoot("fxml/mercado");
+    public void goToGraficas() throws IOException {
+        Main.setRoot("fxml/graficas");
     }
 
     public void goToMercado() throws IOException {
@@ -132,27 +132,28 @@ public class MercadoController implements Initializable {
                     Connection connection = conexionBaseDatos.conexion();
                     Statement statement = connection.createStatement();
 
-
-                    ResultSet resultSet = statement.executeQuery("SELECT " +
-                            "id, " +
-                            "name, " +
-                            "symbol, " +
-                            "cmc_rank, " +
-                            "CASE " +
-                            "WHEN price >= 1 THEN ROUND(price, 2) " +
-                            "WHEN price <= 1 AND price >= 0.1 THEN ROUND(price, 4) " +
-                            "WHEN price <= 0.1 AND price >= 0.01 THEN ROUND(price, 5) " +
-                            "WHEN price <= 0.01 AND price >= 0.001 THEN ROUND(price, 6) " +
-                            "WHEN price<= 0.001 AND price >= 0.0001 THEN ROUND(price, 7) " +
-                            "WHEN price <= 0.0001 AND price >= 0.00001 THEN ROUND(price, 8) " +
-                            "WHEN price <= 0.00001 AND price >= 0.000001 THEN ROUND(price, 9) " +
-                            "ELSE ROUND(price, 20) " +
-                            "END AS price, " +
-                            "percent_change_24h, " +
-                            "market_cap " +
-                            "FROM currencies " +
-                            "ORDER BY cmc_rank");
-
+                    ResultSet resultSet = statement.executeQuery(
+                    "SELECT " +
+                        "id, " +
+                        "name, " +
+                        "symbol, " +
+                        "cmc_rank, " +
+                        "CASE " +
+                        "WHEN price >= 1 THEN ROUND(price, 2) " +
+                        "WHEN price <= 1 AND price >= 0.1 THEN ROUND(price, 4) " +
+                        "WHEN price <= 0.1 AND price >= 0.01 THEN ROUND(price, 5) " +
+                        "WHEN price <= 0.01 AND price >= 0.001 THEN ROUND(price, 6) " +
+                        "WHEN price <= 0.001 AND price >= 0.0001 THEN ROUND(price, 7) " +
+                        "WHEN price <= 0.0001 AND price >= 0.00001 THEN ROUND(price, 8) " +
+                        "WHEN price <= 0.00001 AND price >= 0.000001 THEN ROUND(price, 9) " +
+                        "ELSE ROUND(price, 20) " +
+                        "END AS price, " +
+                        "percent_change_24h, " +
+                        "market_cap " +
+                        "FROM currencies " +
+                        "ORDER BY cmc_rank " +
+                        "LIMIT 100"
+                    );
 
                     tableView.getItems().clear();
 

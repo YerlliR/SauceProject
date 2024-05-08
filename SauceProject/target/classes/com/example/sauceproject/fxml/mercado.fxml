@@ -67,11 +67,11 @@
                      <children>
                         <HBox layoutX="108.0" layoutY="20.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToComprar" styleClass="principal" text="Comprar Activos">
+                              <Button mnemonicParsing="false" onAction="#goToGraficas" styleClass="principal" text="Graficas">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></Button>
-                              <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Mercado" />
+                              <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Top 100" />
                               <Button mnemonicParsing="false" onAction="#goToEarn" styleClass="principal" text="Stake" />
                               <Button mnemonicParsing="false" onAction="#goToCartera" styleClass="principal" text="Cartera" />
                            </children>

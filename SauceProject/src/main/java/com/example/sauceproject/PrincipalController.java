@@ -8,8 +8,8 @@ public class PrincipalController {
     public void goToPrincipal() throws IOException {
         Main.setRoot("fxml/principal");
     }
-    public void goToComprar() throws IOException {
-        Main.setRoot("fxml/mercado");
+    public void goToGraficas() throws IOException {
+        Main.setRoot("fxml/graficas");
     }
     public void goToMercado() throws IOException{
         Main.setRoot("fxml/mercado");

@@ -33,6 +33,20 @@ CREATE TABLE transacciones (
     idCrypto INT,
     precioCompra DECIMAL(20, 15) NOT NULL,
     fechaDeCompra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fechaDeTransaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (idUsuario) REFERENCES Usuarios(id),
     FOREIGN KEY (idCrypto) REFERENCES currencies(id)
 );
+
+
+
+SELECT
+    id,
+    name,
+    symbol,
+    cmc_rank,
+    last_updated,
+    CONCAT('$', price) AS price_with_symbol,
+    CONCAT(percent_change_24h, '%') AS percent_change_24h_with_symbol,
+    CONCAT('$', market_cap) AS market_cap_with_symbol
+FROM currencies;

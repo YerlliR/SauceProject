@@ -28,8 +28,8 @@
                      <children>
                         <HBox layoutX="108.0" layoutY="20.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToComprar" styleClass="principal" text="Comprar Activos" />
-                              <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Mercado" />
+                              <Button mnemonicParsing="false" onAction="#goToGraficas" styleClass="principal" text="Graficas" />
+                              <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Top 100" />
                               <Button mnemonicParsing="false" onAction="#goToEarn" styleClass="principal" text="Stake" />
                               <Button mnemonicParsing="false" onAction="#goToCartera" styleClass="principal" text="Cartera" />
                            </children>
@@ -86,9 +86,9 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#goToComprar" prefWidth="130.0" styleClass="intencion" text="Comprar" />
+                        <Button mnemonicParsing="false" onAction="#goToCartera" prefWidth="130.0" styleClass="intencion" text="Comprar" />
                         <Button mnemonicParsing="false" onAction="#goToMercado" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #242529;" styleClass="intencion" text="Operar" GridPane.columnIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#goToComprar" style="-fx-background-color: #242529;" styleClass="intencion" text="Convertir" GridPane.columnIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#goToMercado" style="-fx-background-color: #242529;" styleClass="intencion" text="Convertir" GridPane.columnIndex="4" />
                      </children>
                   </GridPane>
                </children>

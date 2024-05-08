@@ -17,62 +17,6 @@ import java.util.List;
 
 public class ComprarController  {
 
-   /* @Override
-    public void start(Stage primaryStage) throws SQLException {
-        List<String> criptomonedas = new ArrayList<>();
-
-        // Create a connection to the database
-        Connection conn = conexionBaseDatos.conexion();
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT name FROM currencies ORDER BY cmc_rank ASC");
-
-        // Add each currency to the list
-        while (rs.next()) {
-            criptomonedas.add(rs.getString("name"));
-        }
-
-        // Close the database connection
-        rs.close();
-        stmt.close();
-        conn.close();
-
-        SplitMenuButton currencyMenu = new SplitMenuButton();
-        currencyMenu.setText("Select Currency");
-
-        for (String currency : criptomonedas) {
-            MenuItem item = new MenuItem(currency);
-            item.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
-                    System.out.println("Selected currency: " + currency);
-                }
-            });
-            currencyMenu.getItems().add(item);
-        }
-
-        VBox root = new VBox();
-        root.getChildren().add(currencyMenu);
-
-        Scene scene = new Scene(root, 300, 250);
-
-        primaryStage.setTitle("Currency Selector");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-    }
-    */
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FXML
     private SplitMenuButton splitMenuButton;
 
