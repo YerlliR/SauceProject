@@ -69,10 +69,10 @@
             </GridPane>
          </top>
          <right>
-            <TableView prefHeight="1000.0" prefWidth="230.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tableView" prefHeight="1000.0" prefWidth="239.0" styleClass="grafic" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="115.0" text="Cripto" />
-                <TableColumn minWidth="0.0" prefWidth="114.0" text="Cbo 24h" />
+                <TableColumn fx:id="nameColumn" prefWidth="120.0" text="Cripto" />
+                <TableColumn fx:id="percentChange24hColumn" minWidth="0.0" prefWidth="117.0" text="Cbo 24h" />
               </columns>
             </TableView>
          </right>

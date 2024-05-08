@@ -34,7 +34,7 @@
     -fx-padding: 10 20;
 }
 .button.principal:hover{
-     -fx-text-fill: #55734F;
+     -fx-text-fill: #ffe14d;
 }
 .button.principal:pressed {
     -fx-background-color: rgba(255, 255, 255, 0.4);
@@ -44,7 +44,7 @@
       -fx-font-family: 'Roboto', sans-serif;
       -fx-font-size: 17px;
       -fx-font-weight: 700;
-      -fx-background-color: #55734F;
+      -fx-background-color: #ffe14d;
       -fx-padding: 10px 20px;
       -fx-border: none;
       -fx-border-radius: 5px;
@@ -91,9 +91,6 @@
 .text-field.inicioSesion:focused {
     -fx-border-color: #00bcd4;
 }
-.text-field.inicioSesion:placeholder {
-    -fx-text-fill: #999;
-}
 
 
 /*------------------Mercado--------------------------------------*/
@@ -107,7 +104,7 @@
     -fx-background-color: transparent;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 18px;
-    -fx-alignment: center-right;
+    -fx-alignment: center-left;
     -fx-padding: 0;
     -fx-border-width: 0;
 }
@@ -167,3 +164,11 @@
 
 
 
+
+
+
+
+
+.table-cell .grafic{
+    -fx-alignment: center-left; /* Alinea el contenido a la izquierda */
+}

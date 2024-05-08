@@ -39,14 +39,26 @@ CREATE TABLE transacciones (
 );
 
 
+CREATE TABLE webViewrGraph (
+    id INT PRIMARY KEY,
+    symbol VARCHAR(10),
+    cmc_rank INT
+);
 
-SELECT
-    id,
-    name,
-    symbol,
-    cmc_rank,
-    last_updated,
-    CONCAT('$', price) AS price_with_symbol,
-    CONCAT(percent_change_24h, '%') AS percent_change_24h_with_symbol,
-    CONCAT('$', market_cap) AS market_cap_with_symbol
-FROM currencies;
+INSERT INTO webViewrGraph (id, symbol, cmc_rank)
+SELECT id, symbol, cmc_rank
+FROM currencies
+ORDER BY cmc_rank
+LIMIT 30;
+
+
+
+select * from webViewrGraph order by cmc_rank;
+
+
+
+SELECT cg.symbol, c.percent_change_24h
+FROM webViewrGraph cg
+JOIN currencies c ON cg.id = c.id AND cg.symbol = c.symbol
+ORDER BY cg.cmc_rank
+LIMIT 30;

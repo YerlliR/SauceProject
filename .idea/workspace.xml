@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="354d2399-047c-4ccb-993a-e5c40717a10c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/java/com/example/sauceproject/GraficasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/java/com/example/sauceproject/GraficasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/fxml/graficas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/fxml/graficas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/json/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/json/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/sql/database1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/src/main/resources/com/example/sauceproject/sql/database1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/GraficasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/GraficasController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/fxml/graficas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/fxml/graficas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/json/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/json/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/sql/database1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SauceProject/target/classes/com/example/sauceproject/sql/database1.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2fy2VphoTlBlxeMmZfiiJsdYEpy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.EjecutarComando.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.jsonDowload.executor&quot;: &quot;Run&quot;,
+    &quot;Application.obtencion.executor&quot;: &quot;Run&quot;,
+    &quot;Python.magia.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Shell Script.magia.sh.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/yerlli/Descargas/query10.sql&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.19477434&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;MySQL&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../Descargas/ejBASE" />
+      <recent name="$PROJECT_DIR$/SauceProject/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/SauceProject/libs" />
+      <recent name="$PROJECT_DIR$/SauceProject/src/main/java/com/example/sauceproject" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.example.sauceproject.Main" />
+      <module name="SauceProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="354d2399-047c-4ccb-993a-e5c40717a10c" name="Changes" comment="" />
+      <created>1714759024036</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714759024036</updated>
+      <workItem from="1715161247804" duration="1123000" />
+      <workItem from="1715194897578" duration="283000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
