@@ -45,7 +45,7 @@ public class MercadoController implements Initializable {
     private TableView<Currency> tableView;
     @FXML
     void accion(MouseEvent event) throws IOException {
-        Main.abrirVentana("fxml/operacion");
+        Main.abrirVentana("fxml/comprar");
     }
 
     @FXML
