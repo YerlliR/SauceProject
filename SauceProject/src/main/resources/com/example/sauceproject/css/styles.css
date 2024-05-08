@@ -138,18 +138,16 @@
 }
 
 
-/* styles.css */
-
 .split-menu-button .label {
     -fx-background-color: transparent;
 }
 
 .split-menu-button, .split-menu-button .menu-item {
-    -fx-background-color: transparent; /* Hacer el fondo transparente */
+    -fx-background-color:  #242529; /* Hacer el fondo transparente */
     -fx-text-fill: white; /* Color del texto */
     -fx-border-color: white; /* Color del borde */
     -fx-border-width: 1px; /* Ancho del borde */
-    -fx-background-radius: 5px; /* Redondear los bordes */
+    -fx-border-radius: 10px
 }
 
 .split-menu-button .split-menu-button-menu-item:hover {
@@ -160,3 +158,12 @@
 .split-menu-button .arrow-button {
     -fx-background-color: transparent; /* Hacer transparente el botón de flecha */
 }
+
+
+
+.date-picker > .text-field {
+    -fx-background-color: #242529;
+}
+
+
+
