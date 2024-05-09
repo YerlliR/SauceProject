@@ -11,7 +11,7 @@ CREATE TABLE Usuarios (
     TipoUsuario BOOLEAN default false
 );
 
-
+select * from Usuarios;
 
 CREATE TABLE currencies (
     id INT PRIMARY KEY,
@@ -28,16 +28,18 @@ select * from currencies order by market_cap DESC;
 
 
 CREATE TABLE transacciones (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     idUsuario INT,
     idCrypto INT,
-    precioCompra DECIMAL(20, 15) NOT NULL,
-    fechaDeCompra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    precioTransaccion DECIMAL(20, 15) NOT NULL,
+    fechaDeTransaccionUsuario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fechaDeTransaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (idUsuario) REFERENCES Usuarios(id),
     FOREIGN KEY (idCrypto) REFERENCES currencies(id)
 );
 
+
+select * FROM transacciones;
 
 CREATE TABLE webViewrGraph (
     id INT PRIMARY KEY,

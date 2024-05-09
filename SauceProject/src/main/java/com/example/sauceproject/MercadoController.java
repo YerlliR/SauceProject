@@ -119,6 +119,30 @@ public class MercadoController implements Initializable {
             }
         });
 
+
+
+        percentChangeColumn.setCellFactory(column -> new TableCell<Currency, Double>() {
+        @Override
+        protected void updateItem(Double percentChange, boolean empty) {
+            super.updateItem(percentChange, empty);
+
+            if (empty || percentChange == null) {
+                setText(null);
+                setStyle("");
+            } else {
+                setText(Double.toString(percentChange));
+
+                if (percentChange > 0) {
+                    setStyle("-fx-text-fill: green;");
+                } else if (percentChange < 0) {
+                    setStyle("-fx-text-fill: red;");
+                } else {
+                    setStyle("");
+                }
+            }
+        }
+    });
+
         cargarDatos();
     }
 

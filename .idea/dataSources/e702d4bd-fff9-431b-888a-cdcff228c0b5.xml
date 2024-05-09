@@ -794,7 +794,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="224" parent="1" name="SaucerWallet">
-      <LastIntrospectionLocalTimestamp>2024-05-08.23:15:11</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-09.11:43:04</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="225" parent="1" name="information_schema">
@@ -837,7 +837,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
     <column id="238" parent="234" name="id">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>4</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -926,6 +926,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="257" parent="236" name="id">
+      <AutoIncrement>1</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -938,12 +939,12 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="260" parent="236" name="precioCompra">
+    <column id="260" parent="236" name="precioTransaccion">
       <DasType>decimal(20,15 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="261" parent="236" name="fechaDeCompra">
+    <column id="261" parent="236" name="fechaDeTransaccionUsuario">
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>

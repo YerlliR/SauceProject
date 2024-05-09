@@ -10,6 +10,8 @@ import java.sql.*;
 
 public class loginController {
 
+    public static String user;
+
 
     @FXML
     private TextField usu;
@@ -20,7 +22,7 @@ public class loginController {
     public void Iniciar() throws IOException, SQLException {
 
         Connection connection = conexionBaseDatos.conexion();
-        String user = usu.getText();
+        user = usu.getText();
         String contra = pass.getText();
 
 
@@ -49,4 +51,9 @@ public class loginController {
     public void Volver() throws IOException{
         Main.setRoot("fxml/inicio");
     }
+
+    public String getUser() {
+        return user;
+    }
+
 }

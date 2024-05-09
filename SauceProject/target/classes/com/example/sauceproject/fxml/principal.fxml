@@ -61,7 +61,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="210.0" layoutY="144.0" prefHeight="332.0" prefWidth="827.0" styleClass="tituloPrincipal" text="Posee hasta más de 500 activos diferentes en Sauce Wallet" wrapText="true" />
+                  <Label layoutX="211.0" layoutY="168.0" prefHeight="332.0" prefWidth="832.0" styleClass="tituloPrincipal" text="Posee hasta más de 100 criptomonedas diferentes en Sauce" wrapText="true" />
                   <Label layoutX="223.0" layoutY="457.0" prefHeight="39.0" prefWidth="183.0" styleClass="principal" text="Tu saldo actual es:" />
                   <Label layoutX="223.0" layoutY="567.0" text="Prueba el STAKE pra conseguir una rentabilidad extra" />
                   <Label layoutX="223.0" layoutY="511.0" styleClass="dinero" text="XXX.XXX,XX€" />

@@ -107,6 +107,13 @@
     -fx-padding: 0;
     -fx-border-width: 0;
 }
+.my-table .column5-cell {
+    -fx-background-color: green; /* Estilo para valores positivos */
+}
+
+.my-table .column5-cell.negative {
+    -fx-background-color: red; /* Estilo para valores negativos */
+}
 
 
 .table-column,
