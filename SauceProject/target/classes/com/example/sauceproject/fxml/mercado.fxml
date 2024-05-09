@@ -108,12 +108,12 @@
                <children>
                   <TableView fx:id="tableView" layoutY="1.0" onMouseClicked="#accion" prefHeight="920.0" prefWidth="1497.0" styleClass="my-table" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="cmcRankColumn" editable="false" prefWidth="60.0" sortable="false" text="#" />
-                      <TableColumn fx:id="nameColumn" editable="false" prefWidth="235.0" sortable="false" text="Nombre" />
-                        <TableColumn fx:id="symbolColumn" editable="false" prefWidth="200.0" sortable="false" text="Simbolo" />
-                        <TableColumn fx:id="priceColumn" editable="false" prefWidth="300.0" sortable="false" text="Precio" />
-                        <TableColumn fx:id="percentChangeColumn" editable="false" prefWidth="200.0" sortable="false" text="Rentabilidad 24h" />
-                        <TableColumn fx:id="marketCapColumn" editable="false" prefWidth="489.0" sortable="false" text="Market Cap" />
+                      <TableColumn fx:id="cmcRankColumn" editable="false" prefWidth="60.0" resizable="false" sortable="false" text="#" />
+                      <TableColumn fx:id="nameColumn" editable="false" prefWidth="235.0" resizable="false" sortable="false" text="Nombre" />
+                        <TableColumn fx:id="symbolColumn" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Simbolo" />
+                        <TableColumn fx:id="priceColumn" editable="false" prefWidth="300.0" resizable="false" sortable="false" text="Precio" />
+                        <TableColumn fx:id="percentChangeColumn" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Rentabilidad 24h" />
+                        <TableColumn fx:id="marketCapColumn" editable="false" prefWidth="489.0" resizable="false" sortable="false" text="Market Cap" />
                     </columns>
                   </TableView>
                </children>

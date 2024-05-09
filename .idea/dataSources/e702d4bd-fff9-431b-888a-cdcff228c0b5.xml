@@ -794,7 +794,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="224" parent="1" name="SaucerWallet">
-      <LastIntrospectionLocalTimestamp>2024-05-09.11:43:04</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-05-09.21:16:35</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="225" parent="1" name="information_schema">
@@ -939,74 +939,84 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="260" parent="236" name="precioTransaccion">
+    <column id="260" parent="236" name="cantidadCryptomoneda">
       <DasType>decimal(20,15 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="261" parent="236" name="fechaDeTransaccionUsuario">
-      <DasType>timestamp|0s</DasType>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    <column id="261" parent="236" name="precioPorCriptomoneda">
+      <DasType>decimal(20,15 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="262" parent="236" name="fechaDeTransaccion">
-      <DasType>timestamp|0s</DasType>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    <column id="262" parent="236" name="precioTotal">
+      <DasType>decimal(20,15 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <foreign-key id="263" parent="236" name="transacciones_ibfk_1">
+    <column id="263" parent="236" name="fechaDeTransaccionUsuario">
+      <DasType>timestamp|0s</DasType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="264" parent="236" name="fechaDeTransaccion">
+      <DasType>timestamp|0s</DasType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <foreign-key id="265" parent="236" name="transacciones_ibfk_1">
       <ColNames>idUsuario</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>Usuarios</RefTableName>
     </foreign-key>
-    <foreign-key id="264" parent="236" name="transacciones_ibfk_2">
+    <foreign-key id="266" parent="236" name="transacciones_ibfk_2">
       <ColNames>idCrypto</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>currencies</RefTableName>
     </foreign-key>
-    <index id="265" parent="236" name="PRIMARY">
+    <index id="267" parent="236" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="266" parent="236" name="idUsuario">
+    <index id="268" parent="236" name="idUsuario">
       <ColNames>idUsuario</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="267" parent="236" name="idCrypto">
+    <index id="269" parent="236" name="idCrypto">
       <ColNames>idCrypto</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="268" parent="236" name="PRIMARY">
+    <key id="270" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="269" parent="237" name="id">
+    <column id="271" parent="237" name="id">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="270" parent="237" name="symbol">
+    <column id="272" parent="237" name="symbol">
       <DasType>varchar(10)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="271" parent="237" name="cmc_rank">
+    <column id="273" parent="237" name="cmc_rank">
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="272" parent="237" name="link">
+    <column id="274" parent="237" name="link">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <index id="273" parent="237" name="PRIMARY">
+    <index id="275" parent="237" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="274" parent="237" name="PRIMARY">
+    <key id="276" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

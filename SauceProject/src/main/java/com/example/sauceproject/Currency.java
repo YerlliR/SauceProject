@@ -43,4 +43,21 @@ public class Currency {
     public DoubleProperty marketCapProperty() {
         return marketCap;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

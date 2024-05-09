@@ -84,8 +84,8 @@ public class ComprarController  {
         LocalDate fecha = datePicker.getValue(); // Obtener la fecha seleccionada
 
         // Construir la consulta SQL de inserción
-        String consultaSQL = "INSERT INTO transacciones (idUsuario, idCrypto, precioTransaccion, fechaDeTransaccionUsuario, fechaDeTransaccion) " +
-                "VALUES (?, (SELECT id FROM currencies WHERE name = ?), ?, ?, ?)";
+        String consultaSQL = "INSERT INTO transacciones (idUsuario, idCrypto, cantidadCryptomoneda, precioPorCriptomoneda, precioTotal, fechaDeTransaccionUsuario, fechaDeTransaccion) " +
+                "VALUES (?, (SELECT id FROM currencies WHERE name = ?), ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexionBaseDatos.conexion();
              PreparedStatement pstmt = conn.prepareStatement(consultaSQL)) {
@@ -108,9 +108,12 @@ public class ComprarController  {
                         // Asignar los valores a los parámetros de la consulta SQL
                         pstmt.setInt(1, idUsuario);
                         pstmt.setString(2, criptomoneda);
-                        pstmt.setDouble(3, cantidad * precioPorMoneda); // Calcular el precio total
-                        pstmt.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now())); // Fecha de compra (actual)
-                        pstmt.setTimestamp(5, Timestamp.valueOf(fecha.atStartOfDay())); // Fecha de transacción (seleccionada)
+                        pstmt.setDouble(3, cantidad); // Cantidad de criptomoneda
+                        pstmt.setDouble(4, precioPorMoneda); // Precio por criptomoneda
+                        pstmt.setDouble(5, cantidad * precioPorMoneda); // Precio total (cantidad * precioPorMoneda)
+                        pstmt.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now())); // Fecha de compra (actual)
+                        pstmt.setTimestamp(7, Timestamp.valueOf(fecha.atStartOfDay())); // Fecha de transacción (seleccionada)
+
 
                         // Ejecutar la consulta SQL de inserción
                         pstmt.executeUpdate();

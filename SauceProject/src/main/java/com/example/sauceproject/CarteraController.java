@@ -1,8 +1,23 @@
 package com.example.sauceproject;
 
-import java.io.IOException;
+import com.example.sauceproject.ext.conexionBaseDatos;
 
-public class CarteraController {
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.util.ResourceBundle;
+
+public class CarteraController implements Initializable {
     public void goToPrincipal() throws IOException {
         Main.setRoot("fxml/principal");
     }
@@ -18,4 +33,150 @@ public class CarteraController {
     public void goToCartera() throws IOException{
         Main.setRoot("fxml/cartera");
     }
+
+
+    @FXML
+    private TableView<Currency2> tableView;
+
+    @FXML
+    private TableColumn<Currency2, String> nombre;
+
+    @FXML
+    private TableColumn<Currency2, String> simbolo;
+
+    @FXML
+    private TableColumn<Currency2, Double> precio;
+
+    @FXML
+    private TableColumn<Currency2, Double> rentabilidad;
+
+    @FXML
+    private TableColumn<Currency2, Double> tenencias;
+
+    @FXML
+    private TableColumn<Currency2, Double> perdidasGanancias;
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        simbolo.setCellValueFactory(cellData -> cellData.getValue().simboloProperty());
+        precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+        rentabilidad.setCellValueFactory(cellData -> cellData.getValue().rentabilidadProperty().asObject());
+        tenencias.setCellValueFactory(cellData -> cellData.getValue().tenenciasProperty().asObject());
+        perdidasGanancias.setCellValueFactory(cellData -> cellData.getValue().perdidasGananciasProperty().asObject());
+
+        // Format price and market cap columns
+        precio.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    DecimalFormat df = new DecimalFormat();
+                    if (price >= 1) {
+                        df.setMaximumFractionDigits(2);
+                    } else if (price <= 1 && price >= 0.1) {
+                        df.setMaximumFractionDigits(4);
+                    } else if (price <= 0.1 && price >= 0.01) {
+                        df.setMaximumFractionDigits(5);
+                    } else if (price <= 0.01 && price >= 0.001) {
+                        df.setMaximumFractionDigits(6);
+                    } else if (price <= 0.001 && price >= 0.0001) {
+                        df.setMaximumFractionDigits(7);
+                    } else if (price <= 0.0001 && price >= 0.00001) {
+                        df.setMaximumFractionDigits(8);
+                    } else if (price <= 0.00001 && price >= 0.000001) {
+                        df.setMaximumFractionDigits(9);
+                    } else {
+                        df.setMaximumFractionDigits(20);
+                    }
+                    setText(df.format(price));
+                }
+            }
+        });
+
+
+
+
+
+        rentabilidad.setCellFactory(column -> new TableCell<Currency2, Double>() {
+            @Override
+            protected void updateItem(Double percentChange, boolean empty) {
+                super.updateItem(percentChange, empty);
+
+                if (empty || percentChange == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(Double.toString(percentChange));
+
+                    if (percentChange > 0) {
+                        setStyle("-fx-text-fill: green;");
+                    } else if (percentChange < 0) {
+                        setStyle("-fx-text-fill: red;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        cargarDatos();
+    }
+
+    private void cargarDatos() {
+        // Crear un nuevo hilo para cargar los datos
+        new Thread(() -> {
+            try {
+                Connection connection = conexionBaseDatos.conexion();
+                Statement statement = connection.createStatement();
+
+                ResultSet resultSet = statement.executeQuery("SELECT " +
+                        "c.name AS Nombre_Criptomoneda, " +
+                        "c.symbol AS Símbolo, " +
+                        "c.price AS Precio_Actual, " +
+                        "c.percent_change_24h AS Cambio_Porcentual_24h, " +
+                        "SUM(t.cantidadCryptomoneda) AS Cantidad_Total, " +
+                        "((c.price - AVG(t.precioPorCriptomoneda)) / AVG(t.precioPorCriptomoneda)) * 100 AS Rentabilidad, " +
+                        "SUM(t.cantidadCryptomoneda * (c.price - t.precioPorCriptomoneda)) AS Perdidas_Ganancias " +
+                        "FROM " +
+                        "Usuarios u " +
+                        "JOIN " +
+                        "transacciones t ON u.id = t.idUsuario " +
+                        "JOIN " +
+                        "currencies c ON t.idCrypto = c.id " +
+                        "WHERE " +
+                        "u.id = '1' " +
+                        "GROUP BY " +
+                        "c.id, c.name, c.symbol, c.price, c.percent_change_24h;"
+                );
+
+
+                tableView.getItems().clear();
+
+                while (resultSet.next()) {
+                    String Nombre_Criptomoneda = resultSet.getString("Nombre_Criptomoneda");
+                    String Símbolo = resultSet.getString("Símbolo");
+                    double Precio_Actual = resultSet.getDouble("Precio_Actual");
+                    double Cambio_Porcentual_24h = resultSet.getDouble("Cambio_Porcentual_24h");
+                    double Cantidad_Total = resultSet.getDouble("Cantidad_Total");
+                    double Perdidas_Ganancias = resultSet.getDouble("Perdidas_Ganancias");
+
+                    tableView.getItems().add(new Currency2(Nombre_Criptomoneda, Símbolo, Precio_Actual, Cambio_Porcentual_24h, Cantidad_Total, Perdidas_Ganancias));
+                }
+
+                resultSet.close();
+                statement.close();
+                connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+
 }

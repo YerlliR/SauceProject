@@ -102,7 +102,6 @@
 .table-row-cell,
 .table-cell {
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 18px;
     -fx-alignment: center-right;
     -fx-padding: 0;
     -fx-border-width: 0;
@@ -122,6 +121,7 @@
 .table-view .column-header-background,
 .table-view .column-header {
     -fx-background-color: transparent;
+    -fx-font-size:22px;
 }
 
 /*------------------Compra--------------------------------------*/

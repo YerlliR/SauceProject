@@ -31,7 +31,9 @@ CREATE TABLE transacciones (
     id INT AUTO_INCREMENT PRIMARY KEY,
     idUsuario INT,
     idCrypto INT,
-    precioTransaccion DECIMAL(20, 15) NOT NULL,
+    cantidadCryptomoneda DECIMAL (20,15) NOT NULL,
+    precioPorCriptomoneda DECIMAL (20,15) NOT NULL,
+    precioTotal DECIMAL(20, 15) NOT NULL,
     fechaDeTransaccionUsuario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fechaDeTransaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (idUsuario) REFERENCES Usuarios(id),
@@ -187,3 +189,52 @@ WHERE symbol = 'ATOM';
 UPDATE webViewrGraph
 SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ACROUSD'
 WHERE symbol = 'CRO';
+
+
+
+
+
+
+
+
+
+SELECT
+    c.name AS Nombre_Criptomoneda,
+    c.symbol AS Símbolo,
+    c.price AS Precio_Actual,
+    c.percent_change_24h AS Cambio_Porcentual_24h,
+    SUM(t.cantidadCryptomoneda) AS Cantidad_Total,
+    ((c.price - t.precioPorCriptomoneda) / t.precioPorCriptomoneda) * 100 AS Rentabilidad,
+    (t.cantidadCryptomoneda * (c.price - t.precioPorCriptomoneda)) AS Perdidas_Ganancias
+FROM
+    Usuarios u
+JOIN
+    transacciones t ON u.id = t.idUsuario
+JOIN
+    currencies c ON t.idCrypto = c.id
+WHERE
+    u.id = '1'
+GROUP BY
+    c.id;
+
+
+
+
+SELECT
+    c.name AS Nombre_Criptomoneda,
+    c.symbol AS Símbolo,
+    c.price AS Precio_Actual,
+    c.percent_change_24h AS Cambio_Porcentual_24h,
+    SUM(t.cantidadCryptomoneda) AS Cantidad_Total,
+    ((c.price - AVG(t.precioPorCriptomoneda)) / AVG(t.precioPorCriptomoneda)) * 100 AS Rentabilidad,
+    SUM(t.cantidadCryptomoneda * (c.price - t.precioPorCriptomoneda)) AS Perdidas_Ganancias
+FROM
+    Usuarios u
+JOIN
+    transacciones t ON u.id = t.idUsuario
+JOIN
+    currencies c ON t.idCrypto = c.id
+WHERE
+    u.id = '1'
+GROUP BY
+    c.id, c.name, c.symbol, c.price, c.percent_change_24h;

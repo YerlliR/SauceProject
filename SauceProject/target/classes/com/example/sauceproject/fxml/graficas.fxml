@@ -71,7 +71,7 @@
          <right>
             <TableView fx:id="tableView" prefHeight="1000.0" prefWidth="239.0" styleClass="grafic" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="120.0" text="Cripto" />
+                <TableColumn fx:id="nameColumn" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="Cripto" />
                 <TableColumn fx:id="percentChange24hColumn" minWidth="0.0" prefWidth="117.0" text="Cbo 24h" />
               </columns>
             </TableView>
