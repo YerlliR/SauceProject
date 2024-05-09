@@ -34,7 +34,7 @@
     -fx-padding: 10 20;
 }
 .button.principal:hover{
-     -fx-text-fill: #ffe14d;
+     -fx-text-fill: #00bcd4;
 }
 .button.principal:pressed {
     -fx-background-color: rgba(255, 255, 255, 0.4);
@@ -44,7 +44,7 @@
       -fx-font-family: 'Roboto', sans-serif;
       -fx-font-size: 17px;
       -fx-font-weight: 700;
-      -fx-background-color: #ffe14d;
+      -fx-background-color: #00bcd4;
       -fx-padding: 10px 20px;
       -fx-border: none;
       -fx-border-radius: 5px;
@@ -101,18 +101,13 @@
 
 .table-row-cell,
 .table-cell {
-    -fx-background-color: transparent;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 18px;
-    -fx-alignment: center-left;
+    -fx-alignment: center-right;
     -fx-padding: 0;
     -fx-border-width: 0;
 }
 
-.table-row-cell:even,
-.table-row-cell:odd {
-    -fx-background-color: transparent;
-}
 
 .table-column,
 .table-header-background,
@@ -166,9 +161,37 @@
 
 
 
-
-
-
-.table-cell .grafic{
-    -fx-alignment: center-left; /* Alinea el contenido a la izquierda */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
 }
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 18px;
+    -fx-alignment: center-left;
+}
+
+.table-cell {
+    -fx-background-color: rgb(30, 31, 34);
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #242529; /* Color de fondo alternativo para distinguir las filas */
+
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgb(97, 97, 97); /* Color de fondo cuando la fila está seleccionada */
+}
+
+.table-column,
+.table-header-background,
+.table-header,
+.table-view .column-header-background,
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+

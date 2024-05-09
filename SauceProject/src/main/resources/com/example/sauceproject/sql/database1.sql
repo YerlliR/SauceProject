@@ -58,7 +58,6 @@ LIMIT 30;
 select * from webViewrGraph order by cmc_rank;
 
 
-
 SELECT cg.symbol, c.percent_change_24h
 FROM webViewrGraph cg
 JOIN currencies c ON cg.id = c.id AND cg.symbol = c.symbol
@@ -68,19 +67,19 @@ LIMIT 30;
 
 
 UPDATE webViewrGraph
-SET link = 'https://es.tradingview.com/chart/?symbol=BINANCE%3ABTCUSDTUSD'
+SET link = 'https://es.tradingview.com/chart/?symbol=BINANCE%3ABTCUSD'
 WHERE symbol = 'BTC';
 
 UPDATE webViewrGraph
-SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AETHUSDUSD'
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AETHUSD'
 WHERE symbol = 'ETH';
 
 UPDATE webViewrGraph
-SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AUSDTUSDUSD'
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3AUSDTUSD'
 WHERE symbol = 'USDT';
 
 UPDATE webViewrGraph
-SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ABNBUSDUSD'
+SET link = 'https://es.tradingview.com/chart/?symbol=CRYPTO%3ABNBUSD'
 WHERE symbol = 'BNB';
 
 UPDATE webViewrGraph
