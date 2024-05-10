@@ -93,14 +93,23 @@ public class CarteraController implements Initializable {
                     } else {
                         df.setMaximumFractionDigits(20);
                     }
-                    setText(df.format(price));
+                    setText( df.format(price) + " $"); // Agrega el símbolo del dólar
                 }
             }
         });
 
-
-
-
+        perdidasGanancias.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+            @Override
+            protected void updateItem(Double value, boolean empty) {
+                super.updateItem(value, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    DecimalFormat df = new DecimalFormat("#,##0.00");
+                    setText(df.format(value) + " $"); // Agrega el símbolo del dólar
+                }
+            }
+        });
 
         rentabilidad.setCellFactory(column -> new TableCell<Currency2, Double>() {
             @Override
@@ -111,8 +120,8 @@ public class CarteraController implements Initializable {
                     setText(null);
                     setStyle("");
                 } else {
-                    setText(Double.toString(percentChange));
-
+                    DecimalFormat df = new DecimalFormat("#.##"); // Define el formato para la rentabilidad
+                    setText(df.format(percentChange) + " %"); // Agrega el símbolo del porcentaje
                     if (percentChange > 0) {
                         setStyle("-fx-text-fill: green;");
                     } else if (percentChange < 0) {
@@ -123,6 +132,51 @@ public class CarteraController implements Initializable {
                 }
             }
         });
+
+
+        perdidasGanancias.setCellFactory(column -> new TableCell<Currency2, Double>() {
+            @Override
+            protected void updateItem(Double perdidasGanancias, boolean empty) {
+                super.updateItem(perdidasGanancias, empty);
+
+                if (empty || perdidasGanancias == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    DecimalFormat df = new DecimalFormat("#.##"); // Define el formato para la rentabilidad
+                    setText(df.format(perdidasGanancias) + " $  "); // Agrega el símbolo del porcentaje
+                    if (perdidasGanancias > 0) {
+                        setStyle("-fx-text-fill: green;");
+                    } else if (perdidasGanancias < 0) {
+                        setStyle("-fx-text-fill: red;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+
+        tenencias.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+            @Override
+            protected void updateItem(Double tenencia, boolean empty) {
+                super.updateItem(tenencia, empty);
+                if (empty || tenencia == null) {
+                    setText(null);
+                } else {
+                    // Obtener el objeto Currency2 asociado a esta fila
+                    Currency2 currency = getTableView().getItems().get(getIndex());
+                    if (currency != null) {
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        setText(df.format(tenencia) + " " + currency.getSimbolo());
+                    } else {
+                        setText(null);
+                    }
+                }
+            }
+        });
+
+
 
         cargarDatos();
     }
@@ -177,6 +231,5 @@ public class CarteraController implements Initializable {
             }
         }).start();
     }
-
-
 }
+

@@ -42,4 +42,29 @@ public class Currency2 {
     public DoubleProperty perdidasGananciasProperty() {
         return perdidasGanancias;
     }
+
+
+    public String getNombre() {
+        return nombre.get();
+    }
+
+    public double getPerdidasGanancias() {
+        return perdidasGanancias.get();
+    }
+
+    public double getTenencias() {
+        return tenencias.get();
+    }
+
+    public double getRentabilidad() {
+        return rentabilidad.get();
+    }
+
+    public double getPrecio() {
+        return precio.get();
+    }
+
+    public String getSimbolo() {
+        return simbolo.get();
+    }
 }

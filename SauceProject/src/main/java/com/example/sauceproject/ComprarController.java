@@ -87,6 +87,7 @@ public class ComprarController  {
         String consultaSQL = "INSERT INTO transacciones (idUsuario, idCrypto, cantidadCryptomoneda, precioPorCriptomoneda, precioTotal, fechaDeTransaccionUsuario, fechaDeTransaccion) " +
                 "VALUES (?, (SELECT id FROM currencies WHERE name = ?), ?, ?, ?, ?, ?)";
 
+
         try (Connection conn = conexionBaseDatos.conexion();
              PreparedStatement pstmt = conn.prepareStatement(consultaSQL)) {
             // Obtener el nombre de usuario desde loginController

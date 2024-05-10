@@ -1,6 +1,5 @@
 package com.example.sauceproject;
 
-
 import com.example.sauceproject.ext.conexionBaseDatos;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -102,7 +101,7 @@ public class MercadoController implements Initializable {
                     } else {
                         df.setMaximumFractionDigits(20);
                     }
-                    setText(df.format(price));
+                    setText(df.format(price) + " $");
                 }
             }
         });
@@ -114,32 +113,33 @@ public class MercadoController implements Initializable {
                 if (empty) {
                     setText(null);
                 } else {
-                    setText(String.format("%,.0f", marketCap));
+                    setText(String.format("%,.0f", marketCap) + " $  "); // Agrega el símbolo del dólar
                 }
             }
         });
 
 
 
+
         percentChangeColumn.setCellFactory(column -> new TableCell<Currency, Double>() {
         @Override
         protected void updateItem(Double percentChange, boolean empty) {
-        super.updateItem(percentChange, empty);
+            super.updateItem(percentChange, empty);
 
-        if (empty || percentChange == null) {
-            setText(null);
-            setStyle("");
-        } else {
-            setText(Double.toString(percentChange));
-
-            if (percentChange > 0) {
-                setStyle("-fx-text-fill: green;");
-            } else if (percentChange < 0) {
-                setStyle("-fx-text-fill: red;");
-            } else {
+            if (empty || percentChange == null) {
+                setText(null);
                 setStyle("");
+            } else {
+                DecimalFormat df = new DecimalFormat("#.##"); // Define el formato para la rentabilidad
+                setText(df.format(percentChange) + " %"); // Agrega el símbolo del porcentaje
+                if (percentChange > 0) {
+                    setStyle("-fx-text-fill: green;");
+                } else if (percentChange < 0) {
+                    setStyle("-fx-text-fill: red;");
+                } else {
+                    setStyle("");
+                }
             }
-        }
         }
     });
 

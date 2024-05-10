@@ -115,14 +115,14 @@
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="269.0" prefHeight="631.0" prefWidth="1502.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;">
                      <children>
-                        <TableView fx:id="tableView" layoutX="450.0" layoutY="116.0" prefHeight="728.0" prefWidth="1502.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tableView" layoutX="450.0" layoutY="116.0" prefHeight="631.0" prefWidth="1492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="nombre" minWidth="0.0" prefWidth="180.0" resizable="false" text="Nombre" />
-                              <TableColumn fx:id="simbolo" minWidth="0.0" prefWidth="162.33331298828125" resizable="false" text="Simbolo" />
-                              <TableColumn fx:id="precio" minWidth="0.0" prefWidth="269.66668701171875" resizable="false" text="Precio" />
+                            <TableColumn fx:id="nombre" minWidth="0.0" prefWidth="190.0" resizable="false" text="Nombre" />
+                              <TableColumn fx:id="simbolo" minWidth="0.0" prefWidth="195.0" resizable="false" text="Simbolo" />
+                              <TableColumn fx:id="precio" minWidth="0.0" prefWidth="228.0" resizable="false" text="Precio" />
                               <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="220.66668701171875" resizable="false" text="Rentabilidad 24h" />
-                              <TableColumn fx:id="tenencias" minWidth="0.0" prefWidth="333.0" resizable="false" style="-fx-alignment: center;" text="Tenencias" />
-                              <TableColumn fx:id="perdidasGanancias" minWidth="0.0" prefWidth="340.0" resizable="false" text="Perdidas y ganancias" />
+                              <TableColumn fx:id="tenencias" minWidth="0.0" prefWidth="324.0" resizable="false" style="-fx-alignment: center;" text="Tenencias" />
+                              <TableColumn fx:id="perdidasGanancias" minWidth="0.0" prefWidth="342.0" resizable="false" text="Perdidas y ganancias" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>
