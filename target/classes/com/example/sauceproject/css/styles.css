@@ -1,0 +1,204 @@
+/*------------------GENERAL--------------------------------------*/
+.anchor-pane {
+    -fx-background-color: #1e1f22;
+}
+
+.button {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 0);
+}
+.button:hover {
+    -fx-background-color: #4d4d4d;
+}
+.button:pressed {
+    -fx-background-color: #1a1a1a;
+}
+.label{
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-padding: 10 20;
+}
+
+
+/*------------------PRINCIPAL--------------------------------------*/
+.button.principal {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-padding: 10 20;
+}
+.button.principal:hover{
+     -fx-text-fill: #00bcd4;
+}
+.button.principal:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
+}
+
+.button.intencion {
+      -fx-font-family: 'Roboto', sans-serif;
+      -fx-font-size: 17px;
+      -fx-font-weight: 700;
+      -fx-background-color: #00bcd4;
+      -fx-padding: 10px 20px;
+      -fx-border: none;
+      -fx-border-radius: 5px;
+      -fx-text-align: center;
+      -fx-cursor: pointer;
+}
+
+. button.intencion:hover {
+
+  -fx-background-color: #242529;
+
+}
+
+.label.tituloPrincipal {
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-size: 60px;
+    -fx-font-weight: 700;
+    -fx-text-fill: white;
+    -fx-text-align: center;
+    -fx-padding: 20px;
+    -fx-border-radius: 5px;
+}
+
+.label.dinero{
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-padding: 10 20;
+}
+
+/*------------------INICIO SESION--------------------------------------*/
+
+.text-field.inicioSesion {
+    -fx-background-color: transparent;
+    -fx-border: 2px solid #555;
+    -fx-border-radius: 5px;
+    -fx-border-color: white;
+    -fx-padding: 10px;
+    -fx-box-sizing: border-box;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-outline: none;
+
+}
+.text-field.inicioSesion:focused {
+    -fx-border-color: #00bcd4;
+}
+
+
+/*------------------Mercado--------------------------------------*/
+.table-view {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+}
+
+.table-row-cell,
+.table-cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center-right;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+.my-table .column5-cell {
+    -fx-background-color: green; /* Estilo para valores positivos */
+}
+
+.my-table .column5-cell.negative {
+    -fx-background-color: red; /* Estilo para valores negativos */
+}
+
+
+.table-column,
+.table-header-background,
+.table-header,
+.table-view .column-header-background,
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-font-size:18px;
+}
+
+/*------------------Compra--------------------------------------*/
+
+.menuCompra{
+    -fx-background-color: transparent;
+    -fx-font-size: 17px;
+}
+
+.election{
+    -fx-underline: true;
+    -fx-font-weight: bold;
+}
+
+
+.split-menu-button .label {
+    -fx-background-color: transparent;
+}
+
+.split-menu-button, .split-menu-button .menu-item {
+    -fx-background-color:  #242529; /* Hacer el fondo transparente */
+    -fx-text-fill: white; /* Color del texto */
+    -fx-border-color: white; /* Color del borde */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-border-radius: 10px
+}
+
+.split-menu-button .split-menu-button-menu-item:hover {
+    -fx-background-color: transparent; /* Hacer el fondo del ítem del menú emergente transparente */
+    -fx-text-fill: white; /* Color del texto del ítem del menú emergente */
+}
+
+.split-menu-button .arrow-button {
+    -fx-background-color: transparent; /* Hacer transparente el botón de flecha */
+}
+
+
+
+.date-picker > .text-field {
+    -fx-background-color: #242529;
+}
+
+
+
+
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 18px;
+    -fx-alignment: center-left;
+}
+
+.table-cell {
+    -fx-background-color: rgb(30, 31, 34);
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #242529; /* Color de fondo alternativo para distinguir las filas */
+
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgb(97, 97, 97); /* Color de fondo cuando la fila está seleccionada */
+}
+
+.table-column,
+.table-header-background,
+.table-header,
+.table-view .column-header-background,
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
