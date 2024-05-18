@@ -10,30 +10,32 @@ import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class CarteraController implements Initializable {
+    String usuario = loginController.user;
+
     public void goToPrincipal() throws IOException {
         Main.setRoot("fxml/principal");
     }
+
     public void goToGraficas() throws IOException {
         Main.setRoot("fxml/graficas");
     }
-    public void goToMercado() throws IOException{
+
+    public void goToMercado() throws IOException {
         Main.setRoot("fxml/mercado");
     }
+
     public void goToEarn() throws IOException {
         Main.setRoot("fxml/stake");
     }
-    public void goToCartera() throws IOException{
+
+    public void goToCartera() throws IOException {
         Main.setRoot("fxml/cartera");
     }
-
 
     @FXML
     private TableView<Currency2> tableView;
@@ -47,25 +49,33 @@ public class CarteraController implements Initializable {
     @FXML
     private TableColumn<Currency2, Double> precio;
 
+
     @FXML
-    private TableColumn<Currency2, Double> rentabilidad;
+    private TableColumn<Currency2, Double> cambio24h;
+
 
     @FXML
     private TableColumn<Currency2, Double> tenencias;
+    @FXML
+    private TableColumn<Currency2, Double> rentabilidad;
+
 
     @FXML
     private TableColumn<Currency2, Double> perdidasGanancias;
 
 
 
-    @Override
+
+
+        @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        simbolo.setCellValueFactory(cellData -> cellData.getValue().simboloProperty());
-        precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
+        nombre.setCellValueFactory(cellData -> cellData.getValue().nombre_CriptomonedaProperty());
+        simbolo.setCellValueFactory(cellData -> cellData.getValue().símboloProperty());
+        precio.setCellValueFactory(cellData -> cellData.getValue().precio_ActualProperty().asObject());
+        cambio24h.setCellValueFactory(cellData -> cellData.getValue().cambio_Porcentual_24hProperty().asObject());
+        tenencias.setCellValueFactory(cellData -> cellData.getValue().cantidad_TotalProperty().asObject());
         rentabilidad.setCellValueFactory(cellData -> cellData.getValue().rentabilidadProperty().asObject());
-        tenencias.setCellValueFactory(cellData -> cellData.getValue().tenenciasProperty().asObject());
-        perdidasGanancias.setCellValueFactory(cellData -> cellData.getValue().perdidasGananciasProperty().asObject());
+        perdidasGanancias.setCellValueFactory(cellData -> cellData.getValue().perdidas_GananciasProperty().asObject());
 
         // Format price and market cap columns
         precio.setCellFactory(tc -> new TableCell<Currency2, Double>() {
@@ -93,7 +103,7 @@ public class CarteraController implements Initializable {
                     } else {
                         df.setMaximumFractionDigits(20);
                     }
-                    setText( df.format(price) + " $"); // Agrega el símbolo del dólar
+                    setText(df.format(price) + " $"); // Agrega el símbolo del dólar
                 }
             }
         });
@@ -133,7 +143,6 @@ public class CarteraController implements Initializable {
             }
         });
 
-
         perdidasGanancias.setCellFactory(column -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double perdidasGanancias, boolean empty) {
@@ -156,7 +165,6 @@ public class CarteraController implements Initializable {
             }
         });
 
-
         tenencias.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double tenencia, boolean empty) {
@@ -168,15 +176,14 @@ public class CarteraController implements Initializable {
                     Currency2 currency = getTableView().getItems().get(getIndex());
                     if (currency != null) {
                         DecimalFormat df = new DecimalFormat("#,##0.00");
-                        setText(df.format(tenencia) + " " + currency.getSimbolo());
+
+                        setText(df.format(tenencia) + " " + currency.getSímbolo());
                     } else {
                         setText(null);
                     }
                 }
             }
         });
-
-
 
         cargarDatos();
     }
@@ -188,42 +195,63 @@ public class CarteraController implements Initializable {
                 Connection connection = conexionBaseDatos.conexion();
                 Statement statement = connection.createStatement();
 
-                ResultSet resultSet = statement.executeQuery("SELECT " +
-                        "c.name AS Nombre_Criptomoneda, " +
-                        "c.symbol AS Símbolo, " +
-                        "c.price AS Precio_Actual, " +
-                        "c.percent_change_24h AS Cambio_Porcentual_24h, " +
-                        "SUM(t.cantidadCryptomoneda) AS Cantidad_Total, " +
-                        "((c.price - AVG(t.precioPorCriptomoneda)) / AVG(t.precioPorCriptomoneda)) * 100 AS Rentabilidad, " +
-                        "SUM(t.cantidadCryptomoneda * (c.price - t.precioPorCriptomoneda)) AS Perdidas_Ganancias " +
-                        "FROM " +
-                        "Usuarios u " +
-                        "JOIN " +
-                        "transacciones t ON u.id = t.idUsuario " +
-                        "JOIN " +
-                        "currencies c ON t.idCrypto = c.id " +
-                        "WHERE " +
-                        "u.id = '1' " +
-                        "GROUP BY " +
-                        "c.id, c.name, c.symbol, c.price, c.percent_change_24h;"
-                );
+                // Get the user ID based on the username
+                String getUserIdQuery = "SELECT id FROM Usuarios WHERE Usuario = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(getUserIdQuery);
+                preparedStatement.setString(1, usuario);
+                ResultSet userResultSet = preparedStatement.executeQuery();
 
-
-                tableView.getItems().clear();
-
-                while (resultSet.next()) {
-                    String Nombre_Criptomoneda = resultSet.getString("Nombre_Criptomoneda");
-                    String Símbolo = resultSet.getString("Símbolo");
-                    double Precio_Actual = resultSet.getDouble("Precio_Actual");
-                    double Cambio_Porcentual_24h = resultSet.getDouble("Cambio_Porcentual_24h");
-                    double Cantidad_Total = resultSet.getDouble("Cantidad_Total");
-                    double Perdidas_Ganancias = resultSet.getDouble("Perdidas_Ganancias");
-
-                    tableView.getItems().add(new Currency2(Nombre_Criptomoneda, Símbolo, Precio_Actual, Cambio_Porcentual_24h, Cantidad_Total, Perdidas_Ganancias));
+                int userId = -1;
+                if (userResultSet.next()) {
+                    userId = userResultSet.getInt("id");
                 }
 
-                resultSet.close();
-                statement.close();
+                userResultSet.close();
+                preparedStatement.close();
+
+                if (userId != -1) {
+                    // Now fetch the transaction data for the specific user ID
+                    String query = "SELECT " +
+                            "c.name AS Nombre_Criptomoneda, " +
+                            "c.symbol AS Símbolo, " +
+                            "c.price AS Precio_Actual, " +
+                            "c.percent_change_24h AS Cambio_Porcentual_24h, " +
+                            "SUM(t.cantidadCryptomoneda) AS Cantidad_Total, " +
+                            "((c.price - AVG(t.precioPorCriptomoneda)) / AVG(t.precioPorCriptomoneda)) * 100 AS Rentabilidad, " +
+                            "SUM(t.cantidadCryptomoneda * (c.price - t.precioPorCriptomoneda)) AS Perdidas_Ganancias " +
+                            "FROM " +
+                            "Usuarios u " +
+                            "JOIN " +
+                            "transacciones t ON u.id = t.idUsuario " +
+                            "JOIN " +
+                            "currencies c ON t.idCrypto = c.id " +
+                            "WHERE " +
+                            "u.id = ? " +
+                            "GROUP BY " +
+                            "c.id, c.name, c.symbol, c.price, c.percent_change_24h;";
+
+                    PreparedStatement statement2 = connection.prepareStatement(query);
+                    statement2.setInt(1, userId);
+                    ResultSet resultSet = statement2.executeQuery();
+
+                    tableView.getItems().clear();
+
+                    while (resultSet.next()) {
+                        String Nombre_Criptomoneda = resultSet.getString("Nombre_Criptomoneda");
+                        String Símbolo = resultSet.getString("Símbolo");
+                        double Precio_Actual = resultSet.getDouble("Precio_Actual");
+                        double Cambio_Porcentual_24h = resultSet.getDouble("Cambio_Porcentual_24h");
+                        double Cantidad_Total = resultSet.getDouble("Cantidad_Total");
+                        double Rentabilidad = resultSet.getDouble("Rentabilidad");
+                        double Perdidas_Ganancias = resultSet.getDouble("Perdidas_Ganancias");
+
+                        tableView.getItems().add(new Currency2(Nombre_Criptomoneda, Símbolo, Precio_Actual, Cambio_Porcentual_24h, Cantidad_Total, Rentabilidad, Perdidas_Ganancias));
+                    }
+
+                    resultSet.close();
+                    statement2.close();
+                }
+
                 connection.close();
 
             } catch (SQLException e) {
@@ -232,4 +260,3 @@ public class CarteraController implements Initializable {
         }).start();
     }
 }
-

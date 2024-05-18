@@ -118,11 +118,13 @@
                         <TableView fx:id="tableView" layoutX="450.0" layoutY="116.0" prefHeight="631.0" prefWidth="1492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="nombre" minWidth="0.0" prefWidth="190.0" resizable="false" text="Nombre" />
-                              <TableColumn fx:id="simbolo" minWidth="0.0" prefWidth="195.0" resizable="false" text="Simbolo" />
-                              <TableColumn fx:id="precio" minWidth="0.0" prefWidth="228.0" resizable="false" text="Precio" />
-                              <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="220.66668701171875" resizable="false" text="Rentabilidad 24h" />
-                              <TableColumn fx:id="tenencias" minWidth="0.0" prefWidth="324.0" resizable="false" style="-fx-alignment: center;" text="Tenencias" />
-                              <TableColumn fx:id="perdidasGanancias" minWidth="0.0" prefWidth="342.0" resizable="false" text="Perdidas y ganancias" />
+                              <TableColumn fx:id="simbolo" minWidth="0.0" prefWidth="153.66668701171875" resizable="false" text="Simbolo" />
+                              <TableColumn fx:id="precio" minWidth="0.0" prefWidth="269.33331298828125" resizable="false" text="Precio Actual" />
+                              <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="7.0" resizable="false" text="Rentabilidad 24h" />
+                              <TableColumn fx:id="cambio24h" minWidth="0.0" prefWidth="180.66668701171875" resizable="false" text="Cambio24h" />
+                              <TableColumn fx:id="tenencias" minWidth="0.0" prefWidth="223.33331298828125" resizable="false" style="-fx-alignment: center;" text="Tenencias" />
+                              <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="228.3333740234375" resizable="false" style="-fx-alignment: center;" text="Rentabilidad Total" />
+                              <TableColumn fx:id="perdidasGanancias" minWidth="0.0" prefWidth="250.6666259765625" resizable="false" text="Perdidas y ganancias" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>
