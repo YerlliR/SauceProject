@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="600.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.CarteraController">
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="600.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.CarteraController">
    <children>
       <BorderPane layoutX="515.0" layoutY="215.0" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -111,19 +102,36 @@
                         <Label layoutX="14.0" layoutY="59.0" styleClass="dinero" text="XXX.XXX,XX$" />
                         <Label layoutX="14.0" layoutY="100.0" text="Rentabilidad total:" />
                         <Label layoutX="14.0" layoutY="132.0" text="+ XXX,XX$ (XX,XX%)" />
+                        <GridPane layoutX="1069.0" layoutY="28.0" prefHeight="38.0" prefWidth="412.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="130.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="0.0" prefWidth="14.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="124.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="13.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="146.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#goToComprar" prefWidth="130.0" style="-fx-background-color: #05FA78;" styleClass="intencion" text="Comprar" />
+                              <Button mnemonicParsing="false" onAction="#goToVender" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #FA4031;" styleClass="intencion" text="Vender" GridPane.columnIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#goToConvertir" style="-fx-background-color: #242529; -fx-border-color: white;" styleClass="intencion" text="Convertir" GridPane.columnIndex="4" />
+                           </children>
+                        </GridPane>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="10.0" layoutY="269.0" prefHeight="631.0" prefWidth="1502.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;">
                      <children>
                         <TableView fx:id="tableView" layoutX="450.0" layoutY="116.0" prefHeight="631.0" prefWidth="1492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="nombre" minWidth="0.0" prefWidth="190.0" resizable="false" text="Nombre" />
-                              <TableColumn fx:id="simbolo" minWidth="0.0" prefWidth="153.66668701171875" resizable="false" text="Simbolo" />
+                            <TableColumn fx:id="nombre" minWidth="0.0" prefWidth="190.0" resizable="false" style="-fx-alignment: center-left; -fx-padding: 20px;" text="Nombre" />
+                              <TableColumn fx:id="simbolo" minWidth="0.0" prefWidth="153.66668701171875" resizable="false" style="-fx-alignment: center-left; -fx-padding: 20px;" text="Simbolo" />
                               <TableColumn fx:id="precio" minWidth="0.0" prefWidth="269.33331298828125" resizable="false" text="Precio Actual" />
                               <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="7.0" resizable="false" text="Rentabilidad 24h" />
                               <TableColumn fx:id="cambio24h" minWidth="0.0" prefWidth="180.66668701171875" resizable="false" text="Cambio24h" />
-                              <TableColumn fx:id="tenencias" minWidth="0.0" prefWidth="223.33331298828125" resizable="false" style="-fx-alignment: center;" text="Tenencias" />
-                              <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="228.3333740234375" resizable="false" style="-fx-alignment: center;" text="Rentabilidad Total" />
+                              <TableColumn fx:id="tenencias" minWidth="0.0" prefWidth="248.0" resizable="false" style="-fx-alignment: center;" text="Tenencias" />
+                              <TableColumn fx:id="rentabilidad" minWidth="0.0" prefWidth="205.0" resizable="false" style="-fx-alignment: center;" text="Rentabilidad Total" />
                               <TableColumn fx:id="perdidasGanancias" minWidth="0.0" prefWidth="250.6666259765625" resizable="false" text="Perdidas y ganancias" />
                           </columns>
                         </TableView>

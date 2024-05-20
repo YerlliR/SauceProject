@@ -37,6 +37,19 @@ public class CarteraController implements Initializable {
         Main.setRoot("fxml/cartera");
     }
 
+    public void goToComprar() throws IOException {
+        Main.abrirVentana("fxml/comprar");
+    }
+
+    public void goToVender() throws IOException {
+        Main.abrirVentana("fxml/vender");
+    }
+
+    public void goToConvertir() throws IOException {
+        Main.abrirVentana("fxml/convertir");
+    }
+
+
     @FXML
     private TableView<Currency2> tableView;
 
