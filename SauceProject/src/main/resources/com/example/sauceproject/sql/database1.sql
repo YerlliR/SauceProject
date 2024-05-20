@@ -31,15 +31,14 @@ CREATE TABLE transacciones (
     id INT AUTO_INCREMENT PRIMARY KEY,
     idUsuario INT,
     idCrypto INT,
-    cantidadCryptomoneda DECIMAL (20,15) NOT NULL,
-    precioPorCriptomoneda DECIMAL (20,15) NOT NULL,
+    cantidadCryptomoneda DECIMAL (30,15) NOT NULL,
+    precioPorCriptomoneda DECIMAL (25,15) NOT NULL,
     precioTotal DECIMAL(20, 15) NOT NULL,
     fechaDeTransaccionUsuario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fechaDeTransaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (idUsuario) REFERENCES Usuarios(id),
     FOREIGN KEY (idCrypto) REFERENCES currencies(id)
 );
-
 
 select * FROM transacciones;
 

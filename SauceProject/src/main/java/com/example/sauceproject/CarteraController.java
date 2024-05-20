@@ -1,12 +1,13 @@
 package com.example.sauceproject;
 
 import com.example.sauceproject.ext.conexionBaseDatos;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,33 @@ import java.util.ResourceBundle;
 
 public class CarteraController implements Initializable {
     String usuario = loginController.user;
+
+    @FXML
+    private Label saldoTotalLabel; // Nueva etiqueta para mostrar el saldo total
+
+    @FXML
+    private TableView<Currency2> tableView;
+
+    @FXML
+    private TableColumn<Currency2, String> nombre;
+
+    @FXML
+    private TableColumn<Currency2, String> simbolo;
+
+    @FXML
+    private TableColumn<Currency2, Double> precio;
+
+    @FXML
+    private TableColumn<Currency2, Double> cambio24h;
+
+    @FXML
+    private TableColumn<Currency2, Double> tenencias;
+
+    @FXML
+    private TableColumn<Currency2, Double> rentabilidad;
+
+    @FXML
+    private TableColumn<Currency2, Double> perdidasGanancias;
 
     public void goToPrincipal() throws IOException {
         Main.setRoot("fxml/principal");
@@ -49,38 +77,7 @@ public class CarteraController implements Initializable {
         Main.abrirVentana("fxml/convertir");
     }
 
-
-    @FXML
-    private TableView<Currency2> tableView;
-
-    @FXML
-    private TableColumn<Currency2, String> nombre;
-
-    @FXML
-    private TableColumn<Currency2, String> simbolo;
-
-    @FXML
-    private TableColumn<Currency2, Double> precio;
-
-
-    @FXML
-    private TableColumn<Currency2, Double> cambio24h;
-
-
-    @FXML
-    private TableColumn<Currency2, Double> tenencias;
-    @FXML
-    private TableColumn<Currency2, Double> rentabilidad;
-
-
-    @FXML
-    private TableColumn<Currency2, Double> perdidasGanancias;
-
-
-
-
-
-        @Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         nombre.setCellValueFactory(cellData -> cellData.getValue().nombre_CriptomonedaProperty());
         simbolo.setCellValueFactory(cellData -> cellData.getValue().símboloProperty());
@@ -90,8 +87,18 @@ public class CarteraController implements Initializable {
         rentabilidad.setCellValueFactory(cellData -> cellData.getValue().rentabilidadProperty().asObject());
         perdidasGanancias.setCellValueFactory(cellData -> cellData.getValue().perdidas_GananciasProperty().asObject());
 
-        // Format price and market cap columns
-        precio.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+        // Formatear las columnas de precio y pérdidas/ganancias
+        formatPriceColumn(precio);
+        formatProfitLossColumn(perdidasGanancias);
+        formatTenenciasColumn(tenencias);
+        formatRentabilidadColumn(rentabilidad);
+
+        // Cargar datos y actualizar el saldo total
+        cargarDatos();
+    }
+
+    private void formatPriceColumn(TableColumn<Currency2, Double> column) {
+        column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double price, boolean empty) {
                 super.updateItem(price, empty);
@@ -116,12 +123,14 @@ public class CarteraController implements Initializable {
                     } else {
                         df.setMaximumFractionDigits(20);
                     }
-                    setText(df.format(price) + " $"); // Agrega el símbolo del dólar
+                    setText(df.format(price) + " $");
                 }
             }
         });
+    }
 
-        perdidasGanancias.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+    private void formatProfitLossColumn(TableColumn<Currency2, Double> column) {
+        column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double value, boolean empty) {
                 super.updateItem(value, empty);
@@ -129,22 +138,43 @@ public class CarteraController implements Initializable {
                     setText(null);
                 } else {
                     DecimalFormat df = new DecimalFormat("#,##0.00");
-                    setText(df.format(value) + " $"); // Agrega el símbolo del dólar
+                    setText(df.format(value) + " $");
                 }
             }
         });
+    }
 
-        rentabilidad.setCellFactory(column -> new TableCell<Currency2, Double>() {
+    private void formatTenenciasColumn(TableColumn<Currency2, Double> column) {
+        column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+            @Override
+            protected void updateItem(Double tenencia, boolean empty) {
+                super.updateItem(tenencia, empty);
+                if (empty || tenencia == null) {
+                    setText(null);
+                } else {
+                    Currency2 currency = getTableView().getItems().get(getIndex());
+                    if (currency != null) {
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        setText(df.format(tenencia) + " " + currency.getSímbolo());
+                    } else {
+                        setText(null);
+                    }
+                }
+            }
+        });
+    }
+
+    private void formatRentabilidadColumn(TableColumn<Currency2, Double> column) {
+        column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double percentChange, boolean empty) {
                 super.updateItem(percentChange, empty);
-
                 if (empty || percentChange == null) {
                     setText(null);
                     setStyle("");
                 } else {
-                    DecimalFormat df = new DecimalFormat("#.##"); // Define el formato para la rentabilidad
-                    setText(df.format(percentChange) + " %"); // Agrega el símbolo del porcentaje
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    setText(df.format(percentChange) + " %");
                     if (percentChange > 0) {
                         setStyle("-fx-text-fill: green;");
                     } else if (percentChange < 0) {
@@ -155,60 +185,14 @@ public class CarteraController implements Initializable {
                 }
             }
         });
-
-        perdidasGanancias.setCellFactory(column -> new TableCell<Currency2, Double>() {
-            @Override
-            protected void updateItem(Double perdidasGanancias, boolean empty) {
-                super.updateItem(perdidasGanancias, empty);
-
-                if (empty || perdidasGanancias == null) {
-                    setText(null);
-                    setStyle("");
-                } else {
-                    DecimalFormat df = new DecimalFormat("#.##"); // Define el formato para la rentabilidad
-                    setText(df.format(perdidasGanancias) + " $  "); // Agrega el símbolo del porcentaje
-                    if (perdidasGanancias > 0) {
-                        setStyle("-fx-text-fill: green;");
-                    } else if (perdidasGanancias < 0) {
-                        setStyle("-fx-text-fill: red;");
-                    } else {
-                        setStyle("");
-                    }
-                }
-            }
-        });
-
-        tenencias.setCellFactory(tc -> new TableCell<Currency2, Double>() {
-            @Override
-            protected void updateItem(Double tenencia, boolean empty) {
-                super.updateItem(tenencia, empty);
-                if (empty || tenencia == null) {
-                    setText(null);
-                } else {
-                    // Obtener el objeto Currency2 asociado a esta fila
-                    Currency2 currency = getTableView().getItems().get(getIndex());
-                    if (currency != null) {
-                        DecimalFormat df = new DecimalFormat("#,##0.00");
-
-                        setText(df.format(tenencia) + " " + currency.getSímbolo());
-                    } else {
-                        setText(null);
-                    }
-                }
-            }
-        });
-
-        cargarDatos();
     }
 
     private void cargarDatos() {
-        // Crear un nuevo hilo para cargar los datos
         new Thread(() -> {
             try {
                 Connection connection = conexionBaseDatos.conexion();
                 Statement statement = connection.createStatement();
 
-                // Get the user ID based on the username
                 String getUserIdQuery = "SELECT id FROM Usuarios WHERE Usuario = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(getUserIdQuery);
                 preparedStatement.setString(1, usuario);
@@ -223,7 +207,6 @@ public class CarteraController implements Initializable {
                 preparedStatement.close();
 
                 if (userId != -1) {
-                    // Now fetch the transaction data for the specific user ID
                     String query = "SELECT " +
                             "c.name AS Nombre_Criptomoneda, " +
                             "c.symbol AS Símbolo, " +
@@ -249,6 +232,8 @@ public class CarteraController implements Initializable {
 
                     tableView.getItems().clear();
 
+                    double totalSaldo = 0;
+
                     while (resultSet.next()) {
                         String Nombre_Criptomoneda = resultSet.getString("Nombre_Criptomoneda");
                         String Símbolo = resultSet.getString("Símbolo");
@@ -258,15 +243,24 @@ public class CarteraController implements Initializable {
                         double Rentabilidad = resultSet.getDouble("Rentabilidad");
                         double Perdidas_Ganancias = resultSet.getDouble("Perdidas_Ganancias");
 
+                        // Calcular el saldo total en USD
+                        totalSaldo += Cantidad_Total * Precio_Actual;
+
                         tableView.getItems().add(new Currency2(Nombre_Criptomoneda, Símbolo, Precio_Actual, Cambio_Porcentual_24h, Cantidad_Total, Rentabilidad, Perdidas_Ganancias));
                     }
 
                     resultSet.close();
                     statement2.close();
+
+                    double finalTotalSaldo = totalSaldo;
+                    javafx.application.Platform.runLater(() -> {
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        saldoTotalLabel.setText(df.format(finalTotalSaldo) + " $");
+                    });
                 }
 
+                statement.close();
                 connection.close();
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
