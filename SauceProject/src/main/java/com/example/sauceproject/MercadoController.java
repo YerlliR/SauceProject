@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,14 +37,8 @@ public class MercadoController implements Initializable {
         Main.setRoot("fxml/cartera");
     }
 
-
-
     @FXML
     private TableView<Currency> tableView;
-    @FXML
-    void accion(MouseEvent event) throws IOException {
-        Main.abrirVentana("fxml/comprar");
-    }
 
     @FXML
     private TableColumn<Currency, Integer> cmcRankColumn;

@@ -3,10 +3,7 @@ package com.example.sauceproject;
 import com.example.sauceproject.ext.conexionBaseDatos;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -20,6 +17,9 @@ public class CarteraController implements Initializable {
 
     @FXML
     private Label saldoTotalLabel; // Nueva etiqueta para mostrar el saldo total
+
+    @FXML
+    private Label beneficioTotalLabel; // Nueva etiqueta para mostrar el beneficio total
 
     @FXML
     private TableView<Currency2> tableView;
@@ -44,6 +44,9 @@ public class CarteraController implements Initializable {
 
     @FXML
     private TableColumn<Currency2, Double> perdidasGanancias;
+
+    @FXML
+    private Button eliminarTransaccionesButton;
 
     public void goToPrincipal() throws IOException {
         Main.setRoot("fxml/principal");
@@ -73,10 +76,6 @@ public class CarteraController implements Initializable {
         Main.abrirVentana("fxml/vender");
     }
 
-    public void goToConvertir() throws IOException {
-        Main.abrirVentana("fxml/convertir");
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nombre.setCellValueFactory(cellData -> cellData.getValue().nombre_CriptomonedaProperty());
@@ -93,7 +92,7 @@ public class CarteraController implements Initializable {
         formatTenenciasColumn(tenencias);
         formatRentabilidadColumn(rentabilidad);
 
-        // Cargar datos y actualizar el saldo total
+        // Cargar datos y actualizar el saldo total y el beneficio total
         cargarDatos();
     }
 
@@ -233,6 +232,7 @@ public class CarteraController implements Initializable {
                     tableView.getItems().clear();
 
                     double totalSaldo = 0;
+                    double totalBeneficio = 0; // Variable para almacenar el beneficio total
 
                     while (resultSet.next()) {
                         String Nombre_Criptomoneda = resultSet.getString("Nombre_Criptomoneda");
@@ -246,6 +246,9 @@ public class CarteraController implements Initializable {
                         // Calcular el saldo total en USD
                         totalSaldo += Cantidad_Total * Precio_Actual;
 
+                        // Calcular el beneficio total
+                        totalBeneficio += Perdidas_Ganancias;
+
                         tableView.getItems().add(new Currency2(Nombre_Criptomoneda, Símbolo, Precio_Actual, Cambio_Porcentual_24h, Cantidad_Total, Rentabilidad, Perdidas_Ganancias));
                     }
 
@@ -253,9 +256,11 @@ public class CarteraController implements Initializable {
                     statement2.close();
 
                     double finalTotalSaldo = totalSaldo;
+                    double finalTotalBeneficio = totalBeneficio;
                     javafx.application.Platform.runLater(() -> {
                         DecimalFormat df = new DecimalFormat("#,##0.00");
                         saldoTotalLabel.setText(df.format(finalTotalSaldo) + " $");
+                        beneficioTotalLabel.setText(df.format(finalTotalBeneficio) + " $");
                     });
                 }
 
@@ -266,4 +271,44 @@ public class CarteraController implements Initializable {
             }
         }).start();
     }
+
+    @FXML
+    private void eliminarTransacciones() {
+        new Thread(() -> {
+            try {
+                Connection connection = conexionBaseDatos.conexion();
+                String getUserIdQuery = "SELECT id FROM Usuarios WHERE Usuario = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(getUserIdQuery);
+                preparedStatement.setString(1, usuario);
+                ResultSet userResultSet = preparedStatement.executeQuery();
+
+                int userId = -1;
+                if (userResultSet.next()) {
+                    userId = userResultSet.getInt("id");
+                }
+
+                userResultSet.close();
+                preparedStatement.close();
+
+                if (userId != -1) {
+                    String deleteQuery = "DELETE FROM transacciones WHERE idUsuario = ?";
+                    PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
+                    deleteStatement.setInt(1, userId);
+                    deleteStatement.executeUpdate();
+                    deleteStatement.close();
+
+                    javafx.application.Platform.runLater(() -> {
+                        tableView.getItems().clear();
+                        saldoTotalLabel.setText("0.00 $");
+                        beneficioTotalLabel.setText("0.00 $");
+                    });
+                }
+
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
 }
+

@@ -54,7 +54,6 @@ public class VenderController {
     private List<String> obtenerNombresCriptomonedas() {
         List<String> nombresCriptomonedas = new ArrayList<>();
 
-
         String consultaSQL = "SELECT name FROM currencies ORDER BY cmc_rank ASC";
 
         try (Connection conn = conexionBaseDatos.conexion();
@@ -87,7 +86,6 @@ public class VenderController {
     @FXML
     private DatePicker datePicker;
 
-
     @FXML
     private void aceptar(javafx.event.ActionEvent event) {
         // Obtener los valores de los campos del formulario
@@ -96,34 +94,52 @@ public class VenderController {
         double precioPorMoneda = Double.parseDouble(textFieldPrecioPorMoneda.getText()); // Obtener el precio por moneda introducido
         LocalDate fecha = datePicker.getValue(); // Obtener la fecha seleccionada
 
+        // Asegurarse de que la cantidad sea negativa para una venta
+        double cantidadNegativa = -cantidad;
+        double precioTotalNegativo = cantidadNegativa * precioPorMoneda;
+
         // Construir la consulta SQL de inserción
-        String consultaSQL = "UPDATE transacciones SET cantidadCryptomoneda = cantidadCryptomoneda - ?, precioTotal = precioTotal - ?, fechaDeTransaccionUsuario = ?, fechaDeTransaccion = ? " +
-                "WHERE idUsuario = (SELECT id FROM Usuarios WHERE Usuario = ?) AND idCrypto = (SELECT id FROM currencies WHERE name = ?)";
+        String consultaSQL = "INSERT INTO transacciones (idUsuario, idCrypto, cantidadCryptomoneda, precioPorCriptomoneda, precioTotal, fechaDeTransaccionUsuario, fechaDeTransaccion) " +
+                "VALUES (?, (SELECT id FROM currencies WHERE name = ?), ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexionBaseDatos.conexion();
              PreparedStatement pstmt = conn.prepareStatement(consultaSQL)) {
             // Obtener el nombre de usuario desde loginController
             String nombreUsuario = loginController.user;
 
-            // Establecer los valores de los parámetros de la consulta SQL
-            pstmt.setDouble(1, cantidad); // Resta la cantidad de criptomonedas
-            pstmt.setDouble(2, cantidad * precioPorMoneda); // Resta el precio total (cantidad * precioPorMoneda)
-            pstmt.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now())); // Fecha de venta (actual)
-            pstmt.setTimestamp(4, Timestamp.valueOf(fecha.atStartOfDay())); // Fecha de transacción (seleccionada)
-            pstmt.setString(5, nombreUsuario); // Nombre de usuario
-            pstmt.setString(6, criptomoneda); // Nombre de la criptomoneda
+            // Consulta SQL para obtener el ID del usuario utilizando el nombre de usuario
+            String consultaIdUsuario = "SELECT id FROM Usuarios WHERE Usuario = ?";
+            try (PreparedStatement pstmtIdUsuario = conn.prepareStatement(consultaIdUsuario)) {
+                // Establecer el parámetro de la consulta SQL
+                pstmtIdUsuario.setString(1, nombreUsuario);
 
-            // Ejecutar la consulta SQL de actualización
-            int rowsAffected = pstmt.executeUpdate();
+                // Ejecutar la consulta SQL
+                try (ResultSet rsIdUsuario = pstmtIdUsuario.executeQuery()) {
+                    // Verificar si se encontró un resultado
+                    if (rsIdUsuario.next()) {
+                        // Obtener el ID del usuario
+                        int idUsuario = rsIdUsuario.getInt("id");
 
-            if (rowsAffected > 0) {
-                System.out.println("Transacción de venta realizada correctamente.");
-            } else {
-                System.out.println("Error: No se encontraron criptomonedas suficientes para vender o el usuario no tiene la criptomoneda seleccionada.");
+                        // Asignar los valores a los parámetros de la consulta SQL
+                        pstmt.setInt(1, idUsuario);
+                        pstmt.setString(2, criptomoneda);
+                        pstmt.setDouble(3, cantidadNegativa); // Cantidad negativa de criptomoneda
+                        pstmt.setDouble(4, precioPorMoneda); // Precio por criptomoneda
+                        pstmt.setDouble(5, precioTotalNegativo); // Precio total negativo (cantidad * precioPorMoneda)
+                        pstmt.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now())); // Fecha de venta (actual)
+                        pstmt.setTimestamp(7, Timestamp.valueOf(fecha.atStartOfDay())); // Fecha de transacción (seleccionada)
+
+                        // Ejecutar la consulta SQL de inserción
+                        pstmt.executeUpdate();
+                        System.out.println("Transacción de venta insertada correctamente.");
+                    } else {
+                        // Si no se encontró ningún usuario con ese nombre, mostrar un mensaje de error o manejar la situación de alguna otra manera
+                        System.err.println("No se encontró ningún usuario con el nombre de usuario: " + nombreUsuario);
+                    }
+                }
             }
-
         } catch (SQLException e) {
-            System.err.println("Error al realizar la transacción de venta: " + e.getMessage());
+            System.err.println("Error al insertar la transacción de venta: " + e.getMessage());
         }
     }
 }
