@@ -17,17 +17,6 @@ public class ComprarController  {
 
     @FXML
     private SplitMenuButton splitMenuButton;
-    public void goToComprar() throws IOException {
-        Main.setRoot("fxml/comprar");
-    }
-
-    public void goToVender() throws IOException {
-        Main.setRoot("fxml/vender");
-    }
-
-    public void goToConvertir() throws IOException {
-        Main.setRoot("fxml/convertir");
-    }
 
     @FXML
     private void initialize() {
@@ -76,8 +65,6 @@ public class ComprarController  {
     private void cancelar(javafx.event.ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
-        String usuario = loginController.user;
-        System.out.println(loginController.user);
     }
 
     @FXML
@@ -137,7 +124,13 @@ public class ComprarController  {
                         System.err.println("No se encontró ningún usuario con el nombre de usuario: " + nombreUsuario);
                     }
                 }
+
+
             }
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.close();
+
+
         } catch (SQLException e) {
             System.err.println("Error al insertar la transacción: " + e.getMessage());
         }

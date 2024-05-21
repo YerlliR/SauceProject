@@ -17,18 +17,6 @@ public class VenderController {
 
     @FXML
     private SplitMenuButton splitMenuButton;
-    public void goToComprar() throws IOException {
-        Main.setRoot("fxml/comprar");
-    }
-
-    public void goToVender() throws IOException {
-        Main.setRoot("fxml/vender");
-    }
-
-    public void goToConvertir() throws IOException {
-        Main.setRoot("fxml/convertir");
-    }
-
     @FXML
     private void initialize() {
         // Manejar la selección de opciones del SplitMenuButton
@@ -138,6 +126,9 @@ public class VenderController {
                     }
                 }
             }
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.close();
         } catch (SQLException e) {
             System.err.println("Error al insertar la transacción de venta: " + e.getMessage());
         }
