@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,49 +10,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="600.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.StakeController">
+<AnchorPane prefHeight="1080.0" prefWidth="1900.0" styleClass="anchor-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sauceproject.MarketCapOfController">
    <children>
-      <BorderPane layoutX="515.0" layoutY="215.0" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <GridPane gridLinesVisible="true" prefHeight="1000.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </left>
-         <right>
-            <GridPane prefHeight="1000.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </right>
-         <bottom>
-            <GridPane prefHeight="80.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </bottom>
+      <BorderPane layoutX="304.0" layoutY="120.0" prefHeight="1080.0" prefWidth="1900.0" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <GridPane prefHeight="80.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -68,7 +31,7 @@
                            <children>
                               <Button mnemonicParsing="false" onAction="#goToGraficas" styleClass="principal" text="Graficas" />
                               <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Top 100" />
-                              <Button mnemonicParsing="false" onAction="#goToEarn" styleClass="principal" text="Stake" />
+                              <Button mnemonicParsing="false" onAction="#goToEarn" styleClass="principal" text="MarketCapOf" />
                               <Button mnemonicParsing="false" onAction="#goToCartera" styleClass="principal" text="Cartera" />
                            </children>
                         </HBox>
@@ -91,6 +54,7 @@
                               <Image url="@../img/tuerca.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="saldoTotalLabel" layoutX="614.0" layoutY="18.0" text="Label" />
                      </children>
                   </AnchorPane>
                </children>
@@ -99,86 +63,14 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutX="9.0" layoutY="25.0" prefHeight="680.0" prefWidth="1548.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;">
+                  <AnchorPane layoutX="409.0" layoutY="139.0" prefHeight="313.0" prefWidth="1082.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;" stylesheets="@../css/styles.css">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" styleClass="dinero" text="Stake:" />
-                        <GridPane gridLinesVisible="true" layoutX="40.0" layoutY="146.0" prefHeight="498.0" prefWidth="1413.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="146.0">
-                          <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="755.0" minWidth="10.0" prefWidth="91.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="875.0" minWidth="10.0" prefWidth="622.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="755.0" minWidth="10.0" prefWidth="749.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="17.0">
-                                       <image>
-                                          <Image url="@../img/pngwing.com.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                 <children>
-                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="15.0">
-                                       <image>
-                                          <Image url="@../img/polkadot-new-dot-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                                 <children>
-                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="14.0">
-                                       <image>
-                                          <Image url="@../img/tether-usdt-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-                                 <children>
-                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="14.0">
-                                       <image>
-                                          <Image url="@../img/bnb-bnb-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-                                 <children>
-                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="14.0">
-                                       <image>
-                                          <Image url="@../img/solana-sol-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
-                                 <children>
-                                    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="14.0">
-                                       <image>
-                                          <Image url="@../img/cardano-ada-logo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </GridPane>
-                        <Label layoutX="13.0" layoutY="64.0" prefHeight="65.0" prefWidth="1468.0" text="El stake de criptomonedas es la posibilidad de mantener los fondos en una billetera digital durante un tiempo predeterminado para asegurar el manteninimiento y el funcionamiento de una red blockchain, y a cambio, reciben recompensas en forma de nuevas monedas o tarifas de transacción." wrapText="true" />
-                     </children></AnchorPane>
-                  <AnchorPane layoutX="7.0" layoutY="722.0" prefHeight="181.0" prefWidth="1552.0" style="-fx-background-color: #242529; -fx-background-radius: 10px;">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" styleClass="dinero" text="¡ATENCION!" />
-                        <Label layoutX="14.0" layoutY="64.0" text="El stake conlleva un gran riesgo debido a que mantendras tus activos estaticos y no podras venderlos en caso de una caida del mercado" />
+                        <ComboBox fx:id="cryptoLeftComboBox" layoutX="106.0" layoutY="152.0" prefHeight="42.0" prefWidth="285.0" styleClass="split-menu-button" />
+                        <ComboBox fx:id="cryptoRightComboBox" layoutX="659.0" layoutY="151.0" prefHeight="42.0" prefWidth="285.0" styleClass="split-menu-button" />
+                        <Label fx:id="resultLabel" layoutX="484.0" layoutY="224.0" text="Resultado" />
+                        <Label layoutX="96.0" layoutY="28.0" styleClass="dinero" text="Mostrar el precio que tendría A si tuviera la capitalización bursátil B" />
+                        <Label layoutX="89.0" layoutY="113.0" text="Criptomoneda  A" />
+                        <Label layoutX="644.0" layoutY="112.0" text="Criptomoneda  B" />
                      </children>
                   </AnchorPane>
                </children>

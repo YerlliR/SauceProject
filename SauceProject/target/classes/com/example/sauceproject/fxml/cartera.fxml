@@ -66,19 +66,19 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <HBox layoutX="108.0" layoutY="20.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#goToGraficas" styleClass="principal" text="Graficas" />
-                              <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Top 100" />
-                              <Button mnemonicParsing="false" onAction="#goToEarn" styleClass="principal" text="Stake" />
-                              <Button mnemonicParsing="false" onAction="#goToCartera" styleClass="principal" text="Cartera" />
-                           </children>
-                        </HBox>
                         <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="6.0" onMouseClicked="#goToPrincipal">
                            <image>
                               <Image url="@../img/logo-removebg-preview.png" />
                            </image>
                         </ImageView>
+                        <HBox layoutX="115.0" layoutY="20.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#goToGraficas" styleClass="principal" text="Graficas" />
+                              <Button mnemonicParsing="false" onAction="#goToMercado" styleClass="principal" text="Top 100" />
+                              <Button mnemonicParsing="false" onAction="#goToEarn" styleClass="principal" text="MarketCapOf" />
+                              <Button mnemonicParsing="false" onAction="#goToCartera" styleClass="principal" text="Cartera" />
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
