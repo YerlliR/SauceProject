@@ -34,7 +34,5 @@ Este proyecto es un programa avanzado de consulta de precios de criptomonedas, d
 
 Este programa está diseñado para ser una solución integral para cualquier persona interesada en el seguimiento y la gestión de criptomonedas, ofreciendo funcionalidades avanzadas y una experiencia de usuario superior gracias a las capacidades de Java y JavaFX.
 
-![imagen](https://github.com/YerlliR/SauceProject/assets/127828818/973941a8-4e4f-420d-86e8-f2da43bef179)
-
 
 ## !ESTA EN DESARROLLO ACTUALMENTE¡
