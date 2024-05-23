@@ -54,7 +54,7 @@
                               <Image url="@../img/tuerca.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="saldoTotalLabel" layoutX="614.0" layoutY="18.0" text="Label" />
+                        <Label fx:id="saldoTotalLabel" layoutX="694.0" layoutY="21.0" text="Label" />
                      </children>
                   </AnchorPane>
                </children>
@@ -67,10 +67,11 @@
                      <children>
                         <ComboBox fx:id="cryptoLeftComboBox" layoutX="106.0" layoutY="152.0" prefHeight="42.0" prefWidth="285.0" styleClass="split-menu-button" />
                         <ComboBox fx:id="cryptoRightComboBox" layoutX="659.0" layoutY="151.0" prefHeight="42.0" prefWidth="285.0" styleClass="split-menu-button" />
-                        <Label fx:id="resultLabel" layoutX="484.0" layoutY="224.0" text="Resultado" />
+                        <Label fx:id="resultLabel" layoutX="484.0" layoutY="244.0" text="Resultado" />
                         <Label layoutX="96.0" layoutY="28.0" styleClass="dinero" text="Mostrar el precio que tendría A si tuviera la capitalización bursátil B" />
                         <Label layoutX="89.0" layoutY="113.0" text="Criptomoneda  A" />
                         <Label layoutX="644.0" layoutY="112.0" text="Criptomoneda  B" />
+                        <Label layoutX="242.0" layoutY="205.0" text="El precio de la criptomoneda A con la capitalizacion de la moneda B seria:" />
                      </children>
                   </AnchorPane>
                </children>

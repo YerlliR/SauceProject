@@ -63,8 +63,6 @@ public class VenderController {
     private void cancelar(javafx.event.ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
-        String usuario = loginController.user;
-        System.out.println(loginController.user);
     }
 
     @FXML
@@ -86,12 +84,11 @@ public class VenderController {
         double cantidadNegativa = -cantidad;
         double precioTotalNegativo = cantidadNegativa * precioPorMoneda;
 
-        // Construir la consulta SQL de inserción
-        String consultaSQL = "INSERT INTO transacciones (idUsuario, idCrypto, cantidadCryptomoneda, precioPorCriptomoneda, precioTotal, fechaDeTransaccionUsuario, fechaDeTransaccion) " +
-                "VALUES (?, (SELECT id FROM currencies WHERE name = ?), ?, ?, ?, ?, ?)";
+        // Construir la consulta SQL de verificación de saldo
+        String consultaSaldo = "SELECT SUM(cantidadCryptomoneda) AS saldo FROM transacciones WHERE idUsuario = ? AND idCrypto = (SELECT id FROM currencies WHERE name = ?)";
 
         try (Connection conn = conexionBaseDatos.conexion();
-             PreparedStatement pstmt = conn.prepareStatement(consultaSQL)) {
+             PreparedStatement pstmtSaldo = conn.prepareStatement(consultaSaldo)) {
             // Obtener el nombre de usuario desde loginController
             String nombreUsuario = loginController.user;
 
@@ -108,18 +105,40 @@ public class VenderController {
                         // Obtener el ID del usuario
                         int idUsuario = rsIdUsuario.getInt("id");
 
-                        // Asignar los valores a los parámetros de la consulta SQL
-                        pstmt.setInt(1, idUsuario);
-                        pstmt.setString(2, criptomoneda);
-                        pstmt.setDouble(3, cantidadNegativa); // Cantidad negativa de criptomoneda
-                        pstmt.setDouble(4, precioPorMoneda); // Precio por criptomoneda
-                        pstmt.setDouble(5, precioTotalNegativo); // Precio total negativo (cantidad * precioPorMoneda)
-                        pstmt.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now())); // Fecha de venta (actual)
-                        pstmt.setTimestamp(7, Timestamp.valueOf(fecha.atStartOfDay())); // Fecha de transacción (seleccionada)
+                        // Verificar el saldo de la criptomoneda
+                        pstmtSaldo.setInt(1, idUsuario);
+                        pstmtSaldo.setString(2, criptomoneda);
+                        try (ResultSet rsSaldo = pstmtSaldo.executeQuery()) {
+                            if (rsSaldo.next()) {
+                                double saldoActual = rsSaldo.getDouble("saldo");
+                                if (saldoActual >= cantidad) {
+                                    // Saldo suficiente, proceder con la inserción de la transacción
+                                    String consultaSQL = "INSERT INTO transacciones (idUsuario, idCrypto, cantidadCryptomoneda, precioPorCriptomoneda, precioTotal, fechaDeTransaccionUsuario, fechaDeTransaccion) " +
+                                            "VALUES (?, (SELECT id FROM currencies WHERE name = ?), ?, ?, ?, ?, ?)";
 
-                        // Ejecutar la consulta SQL de inserción
-                        pstmt.executeUpdate();
-                        System.out.println("Transacción de venta insertada correctamente.");
+                                    try (PreparedStatement pstmt = conn.prepareStatement(consultaSQL)) {
+                                        // Asignar los valores a los parámetros de la consulta SQL
+                                        pstmt.setInt(1, idUsuario);
+                                        pstmt.setString(2, criptomoneda);
+                                        pstmt.setDouble(3, cantidadNegativa); // Cantidad negativa de criptomoneda
+                                        pstmt.setDouble(4, precioPorMoneda); // Precio por criptomoneda
+                                        pstmt.setDouble(5, precioTotalNegativo); // Precio total negativo (cantidad * precioPorMoneda)
+                                        pstmt.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now())); // Fecha de venta (actual)
+                                        pstmt.setTimestamp(7, Timestamp.valueOf(fecha.atStartOfDay())); // Fecha de transacción (seleccionada)
+
+                                        // Ejecutar la consulta SQL de inserción
+                                        pstmt.executeUpdate();
+                                        System.out.println("Transacción de venta insertada correctamente.");
+                                    }
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setTitle("Error al vender");
+                                    alert.setHeaderText(null);
+                                    alert.setContentText("La cantidad de criptomonedas que desea vender es superior a sus tenencias");
+                                    alert.showAndWait();
+                                }
+                            }
+                        }
                     } else {
                         // Si no se encontró ningún usuario con ese nombre, mostrar un mensaje de error o manejar la situación de alguna otra manera
                         System.err.println("No se encontró ningún usuario con el nombre de usuario: " + nombreUsuario);
@@ -130,7 +149,7 @@ public class VenderController {
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.close();
         } catch (SQLException e) {
-            System.err.println("Error al insertar la transacción de venta: " + e.getMessage());
+            System.err.println("Error al verificar el saldo o insertar la transacción de venta: " + e.getMessage());
         }
     }
 }
