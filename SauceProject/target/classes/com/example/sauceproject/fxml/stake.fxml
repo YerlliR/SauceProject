@@ -44,17 +44,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="867.0" layoutY="15.0">
-                           <image>
-                              <Image url="@../img/images-removebg-preview.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="814.0" layoutY="26.0">
-                           <image>
-                              <Image url="@../img/tuerca.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="saldoTotalLabel" layoutX="694.0" layoutY="21.0" text="Label" />
+                        <Label fx:id="saldoTotalLabel" layoutX="832.0" layoutY="21.0" text="Label" />
                      </children>
                   </AnchorPane>
                </children>

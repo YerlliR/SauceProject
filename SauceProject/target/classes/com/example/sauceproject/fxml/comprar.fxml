@@ -22,6 +22,5 @@
       <Label layoutX="34.0" layoutY="289.0" text="Precio por moneda" />
       <DatePicker fx:id="datePicker" layoutX="52.0" layoutY="400.0" prefHeight="38.0" prefWidth="354.0" />
       <Label layoutX="34.0" layoutY="365.0" text="Fecha" />
-      <Button layoutX="272.0" layoutY="290.0" mnemonicParsing="false" style="-fx-font-size: 12px; -fx-underline: true;" styleClass="principal" text="Use Market Price" />
    </children>
 </AnchorPane>
