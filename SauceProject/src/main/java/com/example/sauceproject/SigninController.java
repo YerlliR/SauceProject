@@ -24,6 +24,8 @@ public class SigninController {
     private TextField contrasenya;
     @FXML
     private TextField confirmContraseña;
+
+
     public void guardarDatoEnBaseDeDatos() throws IOException, SQLException {
         Connection connection = conexionBaseDatos.conexion();
 
@@ -77,7 +79,6 @@ public class SigninController {
         } catch (SQLException e) {
             System.err.println("Error al conectar a la base de datos: " + e.getMessage());
         } finally {
-            // Cerrar la conexión
             if (connection != null) {
                 connection.close();
             }

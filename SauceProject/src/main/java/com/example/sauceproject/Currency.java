@@ -45,19 +45,27 @@ public class Currency {
     }
 
 
+    public int getCmcRank() {
+        return cmcRank.get();
+    }
 
+    public String getName() {
+        return name.get();
+    }
 
+    public String getSymbol() {
+        return symbol.get();
+    }
 
+    public double getPrice() {
+        return price.get();
+    }
 
+    public double getPercentChange() {
+        return percentChange.get();
+    }
 
-
-
-
-
-
-
-
-
-
-
+    public double getMarketCap() {
+        return marketCap.get();
+    }
 }

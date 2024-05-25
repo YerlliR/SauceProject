@@ -30,7 +30,7 @@ public class GraficasController implements Initializable {
     private TableColumn<Dato, Double> percentChange24hColumn;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle recursos) {
         // Obtener el motor de renderizado web del WebView
         WebEngine webEngine = webView.getEngine();
 
@@ -41,7 +41,7 @@ public class GraficasController implements Initializable {
         percentChange24hColumn.setCellValueFactory(new PropertyValueFactory<>("percentChange24h"));
 
         // Establecer el evento de clic en la TableView
-        tableView.setOnMouseClicked(this::handleRowClick);
+        tableView.setOnMouseClicked(this::filaClick);
 
         // Obtener los datos de la base de datos y mostrarlos en la TableView
         try {
@@ -56,12 +56,12 @@ public class GraficasController implements Initializable {
             );
 
             while (resultSet.next()) {
-                String name = resultSet.getString("symbol");
-                double percentChange24h = resultSet.getDouble("percent_change_24h");
+                String nombre = resultSet.getString("symbol");
+                double cambio24h = resultSet.getDouble("percent_change_24h");
                 String link = resultSet.getString("link");
 
                 // Crear un objeto Dato con los datos obtenidos de la base de datos
-                Dato dato = new Dato(name, percentChange24h, link);
+                Dato dato = new Dato(nombre, cambio24h, link);
 
                 // Agregar el dato a la TableView
                 tableView.getItems().add(dato);
@@ -76,11 +76,11 @@ public class GraficasController implements Initializable {
     }
 
     // Método para manejar el clic en una fila de la TableView
-    private void handleRowClick(MouseEvent event) {
+    private void filaClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            Dato selectedDato = tableView.getSelectionModel().getSelectedItem();
-            if (selectedDato != null && selectedDato.getLink() != null && !selectedDato.getLink().isEmpty()) {
-                webView.getEngine().load(selectedDato.getLink());
+            Dato seleccion = tableView.getSelectionModel().getSelectedItem();
+            if (seleccion != null && seleccion.getLink() != null && !seleccion.getLink().isEmpty()) {
+                webView.getEngine().load(seleccion.getLink());
             }
         }
     }

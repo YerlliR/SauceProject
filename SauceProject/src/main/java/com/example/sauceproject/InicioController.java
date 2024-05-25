@@ -17,8 +17,6 @@ import java.sql.*;
 public class InicioController {
 
     public void CambiarLogIn() throws IOException{
-
-
         Main.setRoot("fxml/login");
 
     }

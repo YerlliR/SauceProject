@@ -68,7 +68,7 @@ public class MercadoController implements Initializable {
         percentChangeColumn.setCellValueFactory(cellData -> cellData.getValue().percentChangeProperty().asObject());
         marketCapColumn.setCellValueFactory(cellData -> cellData.getValue().marketCapProperty().asObject());
 
-        // Format price and market cap columns
+        // Formatear columnas
         priceColumn.setCellFactory(tc -> new TableCell<Currency, Double>() {
             @Override
             protected void updateItem(Double price, boolean empty) {

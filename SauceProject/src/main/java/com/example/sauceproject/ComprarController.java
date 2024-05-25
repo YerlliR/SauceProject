@@ -55,7 +55,7 @@ public class ComprarController  {
             }
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener nombres de criptomonedas: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
 
         return nombresCriptomonedas;

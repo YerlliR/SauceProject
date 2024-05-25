@@ -3,7 +3,6 @@ package com.example.sauceproject.ext;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,11 +13,11 @@ import com.google.gson.JsonParser;
 
 public class baseDatosCrypt {
     public static void magic() {
-        String filePath = "src/main/resources/com/example/sauceproject/json/data.json";
+        String ruta = "src/main/resources/com/example/sauceproject/json/data.json";
 
         try {
             // Leer el contenido del archivo JSON
-            JsonObject jsonObject = JsonParser.parseReader(new FileReader(filePath)).getAsJsonObject();
+            JsonObject jsonObject = JsonParser.parseReader(new FileReader(ruta)).getAsJsonObject();
             JsonArray dataArray = jsonObject.getAsJsonArray("data");
 
             // Establecer conexión con la base de datos
@@ -31,7 +30,7 @@ public class baseDatosCrypt {
             for (int i = 0; i < dataArray.size(); i++) {
                 JsonObject currencyObject = dataArray.get(i).getAsJsonObject();
                 CryptoCurrency currency = gson.fromJson(currencyObject, CryptoCurrency.class);
-                updateOrInsertToDatabase(currency, connection);
+                baseDatosInfo(currency, connection);
             }
 
             connection.close();
@@ -41,40 +40,40 @@ public class baseDatosCrypt {
     }
 
 
-    private static void updateOrInsertToDatabase(CryptoCurrency currency, Connection connection) throws SQLException {
+    private static void baseDatosInfo(CryptoCurrency currency, Connection connection) throws SQLException {
         // Verificar si la criptomoneda ya existe en la base de datos
-        String queryCheck = "SELECT * FROM currencies WHERE id = ?";
-        PreparedStatement checkStatement = connection.prepareStatement(queryCheck);
+        String tablaCripto = "SELECT * FROM currencies WHERE id = ?";
+        PreparedStatement checkStatement = connection.prepareStatement(tablaCripto);
         checkStatement.setInt(1, currency.getId());
         ResultSet resultSet = checkStatement.executeQuery();
 
         if (resultSet.next()) {
             // La criptomoneda ya existe en la base de datos, actualiza los valores
-            String queryUpdate = "UPDATE currencies SET cmc_rank = ?, last_updated = ?, price = ?, percent_change_24h = ?, market_cap = ? WHERE id = ?";
-            PreparedStatement updateStatement = connection.prepareStatement(queryUpdate);
-            updateStatement.setInt(1, currency.getCmc_rank());
-            updateStatement.setString(2, currency.getLast_updated());
-            updateStatement.setDouble(3, currency.getQuote().getUSD().getPrice());
-            updateStatement.setDouble(4, currency.getQuote().getUSD().getPercent_change_24h());
-            updateStatement.setDouble(5, currency.getQuote().getUSD().getMarket_cap());
-            updateStatement.setInt(6, currency.getId());
-            updateStatement.executeUpdate();
-            updateStatement.close();
+            String actualizarMoneda = "UPDATE currencies SET cmc_rank = ?, last_updated = ?, price = ?, percent_change_24h = ?, market_cap = ? WHERE id = ?";
+            PreparedStatement actualizaer = connection.prepareStatement(actualizarMoneda);
+            actualizaer.setInt(1, currency.getCmc_rank());
+            actualizaer.setString(2, currency.getLast_updated());
+            actualizaer.setDouble(3, currency.getQuote().getUSD().getPrice());
+            actualizaer.setDouble(4, currency.getQuote().getUSD().getPercent_change_24h());
+            actualizaer.setDouble(5, currency.getQuote().getUSD().getMarket_cap());
+            actualizaer.setInt(6, currency.getId());
+            actualizaer.executeUpdate();
+            actualizaer.close();
         } else {
             // La criptomoneda no existe en la base de datos, la añade
-            String queryInsert = "INSERT INTO currencies (id, name, symbol, cmc_rank, last_updated, price, percent_change_24h, market_cap) " +
+            String añadirMoneda = "INSERT INTO currencies (id, name, symbol, cmc_rank, last_updated, price, percent_change_24h, market_cap) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement insertStatement = connection.prepareStatement(queryInsert);
-            insertStatement.setInt(1, currency.getId());
-            insertStatement.setString(2, currency.getName());
-            insertStatement.setString(3, currency.getSymbol());
-            insertStatement.setInt(4, currency.getCmc_rank());
-            insertStatement.setString(5, currency.getLast_updated());
-            insertStatement.setDouble(6, currency.getQuote().getUSD().getPrice());
-            insertStatement.setDouble(7, currency.getQuote().getUSD().getPercent_change_24h());
-            insertStatement.setDouble(8, currency.getQuote().getUSD().getMarket_cap());
-            insertStatement.executeUpdate();
-            insertStatement.close();
+            PreparedStatement añadir = connection.prepareStatement(añadirMoneda);
+            añadir.setInt(1, currency.getId());
+            añadir.setString(2, currency.getName());
+            añadir.setString(3, currency.getSymbol());
+            añadir.setInt(4, currency.getCmc_rank());
+            añadir.setString(5, currency.getLast_updated());
+            añadir.setDouble(6, currency.getQuote().getUSD().getPrice());
+            añadir.setDouble(7, currency.getQuote().getUSD().getPercent_change_24h());
+            añadir.setDouble(8, currency.getQuote().getUSD().getMarket_cap());
+            añadir.executeUpdate();
+            añadir.close();
         }
 
         resultSet.close();

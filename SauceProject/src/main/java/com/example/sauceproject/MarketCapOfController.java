@@ -73,11 +73,11 @@ public class MarketCapOfController {
     public void initialize() {
         double saldoTotal = getSaldoTotal();
         saldoTotalLabel.setText(String.format("%.2f $", saldoTotal));
-        populateCryptoComboBoxes();
+        selecccionDeCasillaComboBox();
     }
 
-    private void populateCryptoComboBoxes() {
-        ObservableList<String> cryptoList = FXCollections.observableArrayList();
+    private void selecccionDeCasillaComboBox() {
+        ObservableList<String> listaCrypt = FXCollections.observableArrayList();
         String query = "SELECT symbol FROM currencies";
 
         try (Connection conn = conexionBaseDatos.conexion();
@@ -85,24 +85,24 @@ public class MarketCapOfController {
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
-                cryptoList.add(rs.getString("symbol"));
+                listaCrypt.add(rs.getString("symbol"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        cryptoLeftComboBox.setItems(cryptoList);
-        cryptoRightComboBox.setItems(cryptoList);
+        cryptoLeftComboBox.setItems(listaCrypt);
+        cryptoRightComboBox.setItems(listaCrypt);
 
-        cryptoLeftComboBox.setOnAction(event -> calculatePriceWithMarketCap());
-        cryptoRightComboBox.setOnAction(event -> calculatePriceWithMarketCap());
+        cryptoLeftComboBox.setOnAction(event -> calculadorPrecios());
+        cryptoRightComboBox.setOnAction(event -> calculadorPrecios());
     }
 
-    private void calculatePriceWithMarketCap() {
-        String leftCrypto = cryptoLeftComboBox.getValue();
-        String rightCrypto = cryptoRightComboBox.getValue();
+    private void calculadorPrecios() {
+        String cryptoA = cryptoLeftComboBox.getValue();
+        String cryptoB = cryptoRightComboBox.getValue();
 
-        if (leftCrypto != null && rightCrypto != null) {
+        if (cryptoA != null && cryptoB != null) {
             String query = "SELECT c1.price AS leftPrice, c1.market_cap AS leftMarketCap, " +
                     "c2.market_cap AS rightMarketCap " +
                     "FROM currencies c1, currencies c2 " +
@@ -111,17 +111,17 @@ public class MarketCapOfController {
             try (Connection conn = conexionBaseDatos.conexion();
                  PreparedStatement pstmt = conn.prepareStatement(query)) {
 
-                pstmt.setString(1, leftCrypto);
-                pstmt.setString(2, rightCrypto);
+                pstmt.setString(1, cryptoA);
+                pstmt.setString(2, cryptoB);
                 ResultSet rs = pstmt.executeQuery();
 
                 if (rs.next()) {
-                    double leftPrice = rs.getDouble("leftPrice");
-                    double leftMarketCap = rs.getDouble("leftMarketCap");
-                    double rightMarketCap = rs.getDouble("rightMarketCap");
+                    double precioMonedaA = rs.getDouble("leftPrice");
+                    double marketCapA = rs.getDouble("leftMarketCap");
+                    double marcketCapB = rs.getDouble("rightMarketCap");
 
-                    double newPrice = leftPrice * (rightMarketCap / leftMarketCap);
-                    resultLabel.setText(String.format("%.2f $", newPrice));
+                    double precioSimulado = precioMonedaA * (marcketCapB / marketCapA);
+                    resultLabel.setText(String.format("%.2f $", precioSimulado));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

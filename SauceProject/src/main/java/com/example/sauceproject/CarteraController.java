@@ -4,7 +4,6 @@ import com.example.sauceproject.ext.conexionBaseDatos;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -87,17 +86,17 @@ public class CarteraController implements Initializable {
         perdidasGanancias.setCellValueFactory(cellData -> cellData.getValue().perdidas_GananciasProperty().asObject());
 
         // Formatear las columnas de precio y pérdidas/ganancias
-        formatPriceColumn(precio);
-        formatProfitLossColumn(perdidasGanancias);
-        formatTenenciasColumn(tenencias);
-        formatRentabilidadColumn(rentabilidad);
+        formatearColumnaPrecio(precio);
+        formatearColumnaMarketCap(perdidasGanancias);
+        formatearColumnaTenencias(tenencias);
+        formatearColumnaRentabilidad(rentabilidad);
 
         // Cargar datos y actualizar el saldo total y el beneficio total
         cargarDatos();
     }
 
-    private void formatPriceColumn(TableColumn<Currency2, Double> column) {
-        column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
+    private void formatearColumnaPrecio(TableColumn<Currency2, Double> columna) {
+        columna.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double price, boolean empty) {
                 super.updateItem(price, empty);
@@ -128,7 +127,7 @@ public class CarteraController implements Initializable {
         });
     }
 
-    private void formatProfitLossColumn(TableColumn<Currency2, Double> column) {
+    private void formatearColumnaMarketCap(TableColumn<Currency2, Double> column) {
         column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double value, boolean empty) {
@@ -143,7 +142,7 @@ public class CarteraController implements Initializable {
         });
     }
 
-    private void formatTenenciasColumn(TableColumn<Currency2, Double> column) {
+    private void formatearColumnaTenencias(TableColumn<Currency2, Double> column) {
         column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double tenencia, boolean empty) {
@@ -163,7 +162,7 @@ public class CarteraController implements Initializable {
         });
     }
 
-    private void formatRentabilidadColumn(TableColumn<Currency2, Double> column) {
+    private void formatearColumnaRentabilidad(TableColumn<Currency2, Double> column) {
         column.setCellFactory(tc -> new TableCell<Currency2, Double>() {
             @Override
             protected void updateItem(Double percentChange, boolean empty) {
@@ -192,20 +191,20 @@ public class CarteraController implements Initializable {
                 Connection connection = conexionBaseDatos.conexion();
                 Statement statement = connection.createStatement();
 
-                String getUserIdQuery = "SELECT id FROM Usuarios WHERE Usuario = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(getUserIdQuery);
+                String queryUsuarioId = "SELECT id FROM Usuarios WHERE Usuario = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(queryUsuarioId);
                 preparedStatement.setString(1, usuario);
                 ResultSet userResultSet = preparedStatement.executeQuery();
 
-                int userId = -1;
+                int usuarioId = -1;
                 if (userResultSet.next()) {
-                    userId = userResultSet.getInt("id");
+                    usuarioId = userResultSet.getInt("id");
                 }
 
                 userResultSet.close();
                 preparedStatement.close();
 
-                if (userId != -1) {
+                if (usuarioId != -1) {
                     String query = "SELECT " +
                             "c.name AS Nombre_Criptomoneda, " +
                             "c.symbol AS Símbolo, " +
@@ -226,7 +225,7 @@ public class CarteraController implements Initializable {
                             "c.id, c.name, c.symbol, c.price, c.percent_change_24h;";
 
                     PreparedStatement statement2 = connection.prepareStatement(query);
-                    statement2.setInt(1, userId);
+                    statement2.setInt(1, usuarioId);
                     ResultSet resultSet = statement2.executeQuery();
 
                     tableView.getItems().clear();
@@ -277,25 +276,25 @@ public class CarteraController implements Initializable {
         new Thread(() -> {
             try {
                 Connection connection = conexionBaseDatos.conexion();
-                String getUserIdQuery = "SELECT id FROM Usuarios WHERE Usuario = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(getUserIdQuery);
+                String usuarioIdQuery = "SELECT id FROM Usuarios WHERE Usuario = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(usuarioIdQuery);
                 preparedStatement.setString(1, usuario);
                 ResultSet userResultSet = preparedStatement.executeQuery();
 
-                int userId = -1;
+                int usuarioId = -1;
                 if (userResultSet.next()) {
-                    userId = userResultSet.getInt("id");
+                    usuarioId = userResultSet.getInt("id");
                 }
 
                 userResultSet.close();
                 preparedStatement.close();
 
-                if (userId != -1) {
+                if (usuarioId != -1) {
                     String deleteQuery = "DELETE FROM transacciones WHERE idUsuario = ?";
-                    PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
-                    deleteStatement.setInt(1, userId);
-                    deleteStatement.executeUpdate();
-                    deleteStatement.close();
+                    PreparedStatement eliminarStatement = connection.prepareStatement(deleteQuery);
+                    eliminarStatement.setInt(1, usuarioId);
+                    eliminarStatement.executeUpdate();
+                    eliminarStatement.close();
 
                     javafx.application.Platform.runLater(() -> {
                         tableView.getItems().clear();
